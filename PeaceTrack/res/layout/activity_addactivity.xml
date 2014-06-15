@@ -1,0 +1,91 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/scrollView">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical" >
+   
+    <EditText
+                android:id="@+id/activityname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:textColor="@color/darkgrey"
+                android:background="@color/white"
+                android:layout_marginBottom="0dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:hint="@string/activitynamehint"
+                android:inputType="textCapWords"
+                android:textColorHint="#969696"/>
+    
+    <EditText
+                android:id="@+id/relevantcohortname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:textColor="@color/darkgrey"
+                android:background="@color/white"
+                android:layout_marginBottom="0dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:hint="@string/relevantcohortnamehint"
+                android:inputType="textCapWords"
+                android:textColorHint="#969696"/>
+    <EditText
+                android:id="@+id/associatedoutputdata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:textColor="@color/darkgrey"
+                android:background="@color/white"
+                android:layout_marginBottom="0dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:hint="@string/associatedoutputdatahint"
+                android:inputType="textCapWords"
+                android:textColorHint="#969696"/>
+	 <EditText
+                android:id="@+id/activitydescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:textColor="@color/darkgrey"
+                android:background="@color/white"
+                android:layout_marginBottom="0dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:hint="@string/activitydescriptionhint"
+                android:inputType="textCapWords"
+                android:textColorHint="#969696"/>
+	 
+	      <Button
+	          android:id="@+id/saveactivitybutton"
+	          android:layout_width="match_parent"
+	          android:layout_height="match_parent"
+	          android:layout_gravity="center|bottom"
+	          android:layout_marginTop="50dp"
+	          android:padding="10dp"
+	          android:text="@string/save"
+	          android:textColor="@android:color/white"
+	          android:textSize="22sp"
+	          android:textStyle="bold" />
+    
+</LinearLayout>
+</ScrollView>

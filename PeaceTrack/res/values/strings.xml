@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PeaceTrack</string>
+    <string name="textview">TextView</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="Name">Name</string>
+    <string name="cohort">Cohort</string>
+    <string name="activity">Activity</string>
+    <string name="measurement">Measurement</string>
+    <string name="sector">Sector</string>
+    <string name="country">Country</string>
+    <string name="login">Login</string>
+    <string name="peaceTrack">PeaceTrack</string>
+    
+    <string name="welcomeactivity_label">DashBoard</string>
+	<string name="allcohortsactivity_label">All Cohorts</string>
+	<string name="allactivitiesactivity_label">All Activities</string>
+	<string name="allmeasurementsactivity_label">All Measurements</string>
+	<string name="addcohortactivity_label">Add a Cohort</string>
+	<string name="addactivityactivity_label">Add an Activity</string>
+	<string name="addmeasurementactivity_label">Add a Measurement</string>
+	<string name="cohortdetailsactivity_label">Cohort Profile</string>
+	<string name="measurementdetailsactivity_label">Measurement Profile</string>
+	
+	<string name="search">Search</string>
+	<string name="addcohort">Add Cohort</string>
+	<string name="addactivity">Add Activity</string>
+	<string name="addmeasurement">Add Measurement</string>
+	
+	
+	<string name="participantshint">No. Of Participants</string>
+	<string name="cohortnamehint">Cohort Name</string>
+	<string name="agerangehint">Age Range</string>
+	<string name="maleshint">No. Of Males</string>
+	<string name="femaleshint">No. Of Females</string>
+	<string name="positioncommunityhint">Position Within Community</string>
+	<string name="cohortnoteshint">Notes For Volunteers</string>
+	
+	<string name="activitynamehint">Name of activity</string>
+	<string name="relevantcohortnamehint">Relevant Cohort Name(s)</string>
+	<string name="associatedoutputdatahint">Associated Outputs and output data</string>
+	<string name="activitydescriptionhint">Description of activity</string>
+	
+	<string name="measurementnamehint">Name of Measurement</string>
+	<string name="associatedoutcomehint">Associated Outcome and outcome data</string>
+	<string name="measurementdescriptionhint">Description of measurement</string>
+	
+	
+	<string name="save">Save</string>
+	
+	<string name="addnewactivity">Add a new activity</string>
+	
+	<string name="addnewmeasurement">Add a new measurement</string>
+</resources>
