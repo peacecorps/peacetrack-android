@@ -15,49 +15,46 @@ import android.widget.Button;
  *
  */
 public class WelcomeActivity extends ActionBarActivity implements OnClickListener{
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-	    setContentView(R.layout.activity_welcome);
-	    
+
+		setContentView(R.layout.activity_welcome);
+
 	}
 
 	@Override
-	  public void onResume() {
+	public void onResume() {
 		super.onResume();
+		getSupportActionBar().setDisplayShowHomeEnabled(false);
+		
 		Button cohortsbutton = (Button)findViewById(R.id.cohortsbutton);
 		Button activitybutton = (Button)findViewById(R.id.activitybutton);
 		Button measurementbutton = (Button)findViewById(R.id.measurementbutton);
-		
+
 		cohortsbutton.setOnClickListener(WelcomeActivity.this);
 		activitybutton.setOnClickListener(WelcomeActivity.this);
 		measurementbutton.setOnClickListener(WelcomeActivity.this);
-	
+
 	}
 
 	@Override
 	public void onClick(View v) {
-		switch(v.getId()) {
-		
-		case R.id.cohortsbutton:    //Cohorts
+		int id = v.getId();
+		if (id == R.id.cohortsbutton) {
 			Intent intent = new Intent(WelcomeActivity.this,AllCohortsActivity.class);
 			WelcomeActivity.this.startActivity(intent);
-			break;
-		case R.id.activitybutton:    //Activities
-			intent = new Intent(WelcomeActivity.this,AllActivitiesActivity.class);
+		} else if (id == R.id.activitybutton) {
+			Intent intent = new Intent(WelcomeActivity.this,AllActivitiesActivity.class);
 			WelcomeActivity.this.startActivity(intent);
-			break;
-		case R.id.measurementbutton:    //Measurements
-			intent = new Intent(WelcomeActivity.this,AllMeasurementsActivity.class);
+		} else if (id == R.id.measurementbutton) {
+			Intent intent = new Intent(WelcomeActivity.this,AllMeasurementsActivity.class);
 			WelcomeActivity.this.startActivity(intent);
-			break;
-			
 		}
-		
+
 	}
-	
+
 }

@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="@string/Name"
+            android:text="@string/name"
             android:textSize="20sp" />
 
         <EditText
@@ -42,7 +42,33 @@
             android:layout_weight="1"
             android:ems="10" >
 
-            <requestFocus android:layout_width="wrap_content" />
+
+        </EditText>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/password"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/nameEditPassword"
+            android:inputType="textPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:ems="10" >
+
 
         </EditText>
 
@@ -62,9 +88,9 @@
 
         <Spinner
             android:id="@+id/sector_spinner"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginRight="10dp" />
 
     </LinearLayout>
@@ -84,9 +110,9 @@
 
         <Spinner
             android:id="@+id/country_spinner"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginRight="10dp" />
     </LinearLayout>
 

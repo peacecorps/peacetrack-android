@@ -15,39 +15,35 @@ import android.widget.Button;
  *
  */
 public class MeasurementDetailsActivity extends ActionBarActivity implements OnClickListener {
-	
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-	    setContentView(R.layout.activity_measurementdetails);
-	    
+
+		setContentView(R.layout.activity_measurementdetails);
+
 	}
 
 	@Override
-	  public void onResume() {
+	public void onResume() {
 		super.onResume();
-		
+		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		Button addnewactivitybutton = (Button)findViewById(R.id.addnewactivitybutton);
 		Button addnewmeasurementbutton = (Button)findViewById(R.id.addnewmeasurementbutton);
-		
+
 	}
 	@Override
 	public void onClick(View v) {
 
-switch(v.getId()) {
-		
-		case R.id.addnewactivitybutton:    //Add New Activity Button
+		int id = v.getId();
+		if (id == R.id.addnewactivitybutton) {
 			Intent intent = new Intent(this,AddActivityActivity.class);
 			this.startActivity(intent);
-			break;
-		case R.id.addnewmeasurementbutton:    //Add new Measurement Button
-			intent = new Intent(this,AddMeasurementActivity.class);
+		} else if (id == R.id.addnewmeasurementbutton) {
+			Intent intent = new Intent(this,AddMeasurementActivity.class);
 			this.startActivity(intent);
-			break;
-		
 		}
 	}
 
