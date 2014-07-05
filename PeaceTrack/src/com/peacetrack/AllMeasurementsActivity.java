@@ -14,13 +14,12 @@ import android.view.MenuItem;
 
 /**
  * @author Pooja
- *
+ * 
  */
 public class AllMeasurementsActivity extends ActionBarActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listmeasurements);
 	}
@@ -38,29 +37,30 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.allmeasurementsmenu, menu);
 
-		//When user types i.e. query for the item in the search bar, how would the search bar behave
+		// When user types i.e. query for the item in the search bar, how would
+		// the search bar behave
 
 		SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query) {
-				//TODO 
+				// TODO
 				return true;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String newText) {
-				//TODO 
+				// TODO
 				return true;
 			}
 		};
 
-
 		MenuItem searchItem = menu.findItem(R.id.action_search);
-		SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+		SearchView searchView = (SearchView) MenuItemCompat
+				.getActionView(searchItem);
 		searchView.setOnQueryTextListener(queryTextListener);
 
-
-		final MenuItem addMeasurement = menu.findItem(R.id.action_addmeasurement);
+		final MenuItem addMeasurement = menu
+				.findItem(R.id.action_addmeasurement);
 
 		getSupportActionBar().setDisplayShowTitleEnabled(true);
 		return true;
@@ -68,7 +68,6 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 
 	/*
 	 * Select the new screen when any icon in action bar is selected.
-	 * 
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,7 +87,6 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 		return true;
 	}
 
-
-	//TODO Populate Measurements data to the next screen from here.
+	// TODO Populate Measurements data to the next screen from here.
 
 }

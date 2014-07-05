@@ -7,13 +7,13 @@
     <string name="action_settings">Settings</string>
     
     <string name="name">Username</string>
-    <string name="password">Password</string>
+    <string name="email">E-mail</string>
     
     <string name="cohort">My Cohorts</string>
     <string name="activity">My Activities</string>
     <string name="measurement">My Measurements</string>
     <string name="sector">Sector</string>
-    <string name="country">Country</string>
+    <string name="post">Post</string>
     <string name="login">Login</string>
     <string name="peaceTrack">PeaceTrack</string>
     

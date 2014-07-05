@@ -12,37 +12,37 @@ import android.widget.Button;
 
 /**
  * @author Pooja
- *
+ * 
  */
-public class CohortDetailsActivity extends ActionBarActivity implements OnClickListener {
+public class CohortDetailsActivity extends ActionBarActivity implements
+		OnClickListener {
 
-	
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-	    setContentView(R.layout.activity_cohortdetails);
-	    
+
+		setContentView(R.layout.activity_cohortdetails);
+
 	}
 
 	@Override
-	  public void onResume() {
+	public void onResume() {
 		super.onResume();
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
-		Button addnewactivitybutton = (Button)findViewById(R.id.addnewactivitybutton);
-		Button addnewmeasurementbutton = (Button)findViewById(R.id.addnewmeasurementbutton);
-		
+		Button addnewactivitybutton = (Button) findViewById(R.id.addnewactivitybutton);
+		Button addnewmeasurementbutton = (Button) findViewById(R.id.addnewmeasurementbutton);
+
 	}
+
 	@Override
 	public void onClick(View v) {
 
 		int id = v.getId();
 		if (id == R.id.addnewactivitybutton) {
-			Intent intent = new Intent(this,AddActivityActivity.class);
+			Intent intent = new Intent(this, AddActivityActivity.class);
 			this.startActivity(intent);
 		} else if (id == R.id.addnewmeasurementbutton) {
-			Intent intent = new Intent(this,AddMeasurementActivity.class);
+			Intent intent = new Intent(this, AddMeasurementActivity.class);
 			this.startActivity(intent);
 		}
 	}

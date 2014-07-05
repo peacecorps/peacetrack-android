@@ -3,26 +3,23 @@
  */
 package com.peacetrack;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.support.v7.widget.SearchView;
-
 
 /**
  * @author Pooja
- *
+ * 
  */
 public class AllCohortsActivity extends ActionBarActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listcohorts);
 	}
@@ -39,25 +36,26 @@ public class AllCohortsActivity extends ActionBarActivity {
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.allcohortsmenu, menu);
 
-		//When user types i.e. query for the item in the search bar, how would the search bar behave
+		// When user types i.e. query for the item in the search bar, how would
+		// the search bar behave
 
 		SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query) {
-				//TODO 
+				// TODO
 				return true;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String newText) {
-				//TODO 
+				// TODO
 				return true;
 			}
 		};
 
-
 		MenuItem searchItem = menu.findItem(R.id.action_search);
-		SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+		SearchView searchView = (SearchView) MenuItemCompat
+				.getActionView(searchItem);
 		searchView.setOnQueryTextListener(queryTextListener);
 
 		final MenuItem addCohort = menu.findItem(R.id.action_addcohort);
@@ -68,7 +66,6 @@ public class AllCohortsActivity extends ActionBarActivity {
 
 	/*
 	 * Select the new screen when any icon in action bar is selected.
-	 * 
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,7 +85,6 @@ public class AllCohortsActivity extends ActionBarActivity {
 		return true;
 	}
 
-
-	//TODO Populate Cohorts data to the next screen from here.
+	// TODO Populate Cohorts data to the next screen from here.
 
 }

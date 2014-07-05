@@ -30,7 +30,7 @@
         android:textStyle="bold" />
     
     <EditText
-        android:id="@+id/countryname"
+        android:id="@+id/postname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -38,7 +38,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/rounded_edittext"
-        android:hint="@string/country"
+        android:hint="@string/post"
         android:inputType="textCapWords"
         android:paddingBottom="10dp"
         android:paddingLeft="15dp"

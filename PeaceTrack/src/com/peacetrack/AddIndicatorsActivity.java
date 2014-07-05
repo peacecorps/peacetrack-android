@@ -12,25 +12,25 @@ import android.view.View.OnClickListener;
 
 /**
  * @author Pooja
- *
+ * 
  */
-public class AddIndicatorsActivity extends ActionBarActivity implements OnClickListener {
-	
+public class AddIndicatorsActivity extends ActionBarActivity implements
+		OnClickListener {
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-	    setContentView(R.layout.activity_addindicators);
+
+		setContentView(R.layout.activity_addindicators);
 	}
-	
+
 	@Override
-	  public void onResume() {
+	public void onResume() {
 		super.onResume();
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int itemId = item.getItemId();
@@ -48,7 +48,7 @@ public class AddIndicatorsActivity extends ActionBarActivity implements OnClickL
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
