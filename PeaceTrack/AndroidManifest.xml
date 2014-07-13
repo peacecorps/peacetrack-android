@@ -10,13 +10,12 @@
 
     <application
         android:allowBackup="true"
-        
-       	android:theme="@style/AppTheme"
-        android:label="@string/app_name" >
+        android:icon="@drawable/ic_launcher"
+       	android:theme="@style/AppTheme" >
         <activity
-            android:name="com.peacetrack.LoginActivity"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name" >
+            android:name="com.peacetrack.views.welcome.WelcomeActivity"
+            
+            android:label="@string/welcomeactivity_label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,43 +23,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.peacetrack.WelcomeActivity"
+            android:name="com.peacetrack.views.welcome.LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/welcomeactivity_label" />
+            android:label="@string/app_name" />
         <activity
-            android:name="com.peacetrack.AllCohortsActivity"
+            android:name="com.peacetrack.views.cohorts.AllCohortsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/allcohortsactivity_label" />
         <activity
-            android:name="com.peacetrack.AllActivitiesActivity"
+            android:name="com.peacetrack.views.activities.AllActivitiesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/allactivitiesactivity_label" />
         <activity
-            android:name="com.peacetrack.AllMeasurementsActivity"
+            android:name="com.peacetrack.views.measurements.AllMeasurementsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/allmeasurementsactivity_label" />
         <activity
-            android:name="com.peacetrack.AddCohortActivity"
+            android:name="com.peacetrack.views.cohorts.AddCohortActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/addcohortactivity_label" />
         <activity
-            android:name="com.peacetrack.AddActivityActivity"
+            android:name="com.peacetrack.views.activities.AddActivityActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/addactivityactivity_label" />
         <activity
-            android:name="com.peacetrack.AddMeasurementActivity"
+            android:name="com.peacetrack.views.measurements.AddMeasurementActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/addmeasurementactivity_label" />
         <activity
-            android:name="com.peacetrack.CohortDetailsActivity"
+            android:name="com.peacetrack.views.cohorts.CohortDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/cohortdetailsactivity_label" />
         <activity
-            android:name="com.peacetrack.MeasurementDetailsActivity"
+      		android:name="com.peacetrack.views.measurements.MeasurementDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/measurementdetailsactivity_label" />
         <activity
-            android:name="com.peacetrack.AddIndicatorsActivity"
+            android:name="com.peacetrack.views.activities.AddIndicatorsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/addindicatorsactivity_label" />
         

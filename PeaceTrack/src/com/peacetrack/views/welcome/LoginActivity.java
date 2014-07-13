@@ -1,6 +1,12 @@
-package com.peacetrack;
+package com.peacetrack.views.welcome;
 
 import java.util.List;
+
+import com.peacetrack.R;
+import com.peacetrack.R.id;
+import com.peacetrack.R.layout;
+import com.peacetrack.R.string;
+import com.peacetrack.backend.indicators.IndicatorsDBHandler;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -69,13 +75,13 @@ public class LoginActivity extends ActionBarActivity implements
 			public void onClick(View v) {
 				if (nameEditText.getText().length() == 0) {
 					Toast.makeText(LoginActivity.this,
-							"Please enter your name", Toast.LENGTH_SHORT)
+							getString(R.string.namecheck), Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
-				if (!isEmailValid((CharSequence) emailEditText)) {
+				if (emailEditText.getText().length() == 0 || !isEmailValid((CharSequence) emailEditText.getText())) {
 					Toast.makeText(LoginActivity.this,
-							"Please enter valid email id", Toast.LENGTH_SHORT)
+							getString(R.string.emailcheck), Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}

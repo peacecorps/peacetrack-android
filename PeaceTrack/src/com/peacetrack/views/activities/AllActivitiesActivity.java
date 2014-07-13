@@ -1,4 +1,10 @@
-package com.peacetrack;
+package com.peacetrack.views.activities;
+
+import com.peacetrack.R;
+import com.peacetrack.R.id;
+import com.peacetrack.R.layout;
+import com.peacetrack.R.menu;
+import com.peacetrack.views.welcome.WelcomeActivity;
 
 import android.content.Intent;
 import android.os.Bundle;

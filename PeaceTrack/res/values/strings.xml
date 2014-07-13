@@ -9,6 +9,9 @@
     <string name="name">Username</string>
     <string name="email">E-mail</string>
     
+    <string name="namecheck">Please Enter Your Name</string>
+    <string name="emailcheck">Please enter valid email id</string>
+    
     <string name="cohort">My Cohorts</string>
     <string name="activity">My Activities</string>
     <string name="measurement">My Measurements</string>

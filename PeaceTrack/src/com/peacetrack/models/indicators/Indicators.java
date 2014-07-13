@@ -1,7 +1,7 @@
 /**
  * @author Pooja
  */
-package com.peacetrack;
+package com.peacetrack.models.indicators;
 
 /*
  * ***************************************

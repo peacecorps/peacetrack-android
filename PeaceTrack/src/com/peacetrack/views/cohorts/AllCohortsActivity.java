@@ -1,7 +1,13 @@
 /**
  * 
  */
-package com.peacetrack;
+package com.peacetrack.views.cohorts;
+
+import com.peacetrack.R;
+import com.peacetrack.R.id;
+import com.peacetrack.R.layout;
+import com.peacetrack.R.menu;
+import com.peacetrack.views.welcome.WelcomeActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,12 +22,12 @@ import android.view.MenuItem;
  * @author Pooja
  * 
  */
-public class AllMeasurementsActivity extends ActionBarActivity {
+public class AllCohortsActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_listmeasurements);
+		setContentView(R.layout.activity_listcohorts);
 	}
 
 	@Override
@@ -29,13 +35,12 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 		super.onResume();
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.allmeasurementsmenu, menu);
+		menuInflater.inflate(R.menu.allcohortsmenu, menu);
 
 		// When user types i.e. query for the item in the search bar, how would
 		// the search bar behave
@@ -59,8 +64,7 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 				.getActionView(searchItem);
 		searchView.setOnQueryTextListener(queryTextListener);
 
-		final MenuItem addMeasurement = menu
-				.findItem(R.id.action_addmeasurement);
+		final MenuItem addCohort = menu.findItem(R.id.action_addcohort);
 
 		getSupportActionBar().setDisplayShowTitleEnabled(true);
 		return true;
@@ -78,8 +82,8 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
-		} else if (itemId == R.id.action_addmeasurement) {
-			Intent intent = new Intent(this, AddMeasurementActivity.class);
+		} else if (itemId == R.id.action_addcohort) {
+			Intent intent = new Intent(this, AddCohortActivity.class);
 			startActivity(intent);
 		} else {
 			return super.onOptionsItemSelected(item);
@@ -87,6 +91,6 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 		return true;
 	}
 
-	// TODO Populate Measurements data to the next screen from here.
+	// TODO Populate Cohorts data to the next screen from here.
 
 }

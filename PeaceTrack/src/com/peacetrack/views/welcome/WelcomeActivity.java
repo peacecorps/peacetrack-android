@@ -1,10 +1,19 @@
 /**
  * 
  */
-package com.peacetrack;
+package com.peacetrack.views.welcome;
+
+import com.peacetrack.R;
+import com.peacetrack.R.id;
+import com.peacetrack.R.layout;
+import com.peacetrack.views.activities.AllActivitiesActivity;
+import com.peacetrack.views.cohorts.AllCohortsActivity;
+import com.peacetrack.views.measurements.AllMeasurementsActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,15 +38,23 @@ public class WelcomeActivity extends ActionBarActivity implements
 	public void onResume() {
 		super.onResume();
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
+		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		if(!preferences.contains(getString(R.string.name))) {
+			Intent intent = new Intent(this,LoginActivity.class);
+			this.startActivity(intent);
+			this.finish();
+		}
 
-		Button cohortsbutton = (Button) findViewById(R.id.cohortsbutton);
-		Button activitybutton = (Button) findViewById(R.id.activitybutton);
-		Button measurementbutton = (Button) findViewById(R.id.measurementbutton);
+		else {
+			Button cohortsbutton = (Button) findViewById(R.id.cohortsbutton);
+			Button activitybutton = (Button) findViewById(R.id.activitybutton);
+			Button measurementbutton = (Button) findViewById(R.id.measurementbutton);
 
-		cohortsbutton.setOnClickListener(WelcomeActivity.this);
-		activitybutton.setOnClickListener(WelcomeActivity.this);
-		measurementbutton.setOnClickListener(WelcomeActivity.this);
-
+			cohortsbutton.setOnClickListener(WelcomeActivity.this);
+			activitybutton.setOnClickListener(WelcomeActivity.this);
+			measurementbutton.setOnClickListener(WelcomeActivity.this);
+		}
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.peacetrack;
+package com.peacetrack.backend.indicators;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.peacetrack.models.indicators.Indicators;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -23,7 +25,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	private String databasePath;
-	private static String DB_NAME = "indicators.sqlite";
+	private static String DB_NAME = "indicators1.sqlite";
 	private SQLiteDatabase sqLiteDatabase;
 	private final Context context;
 
@@ -47,6 +49,17 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 	 * database.
 	 * */
 	public void createDataBase() throws IOException {
+		
+			this.sqLiteDatabase = this.getReadableDatabase();
+
+			try {
+				copyDataBaseToSystem();
+			} catch (IOException e) {
+				throw new Error("Error!! Could not copy database to the system");
+			}
+		
+	}
+	/*public void createDataBase() throws IOException {
 		boolean dbExist = checkDataBase();
 
 		if (dbExist) {
@@ -60,7 +73,7 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 				throw new Error("Error!! Could not copy database to the system");
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * Check if the database already exist to avoid re-copying the file each

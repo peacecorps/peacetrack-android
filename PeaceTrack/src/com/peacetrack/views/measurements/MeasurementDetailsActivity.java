@@ -1,7 +1,12 @@
 /**
  * 
  */
-package com.peacetrack;
+package com.peacetrack.views.measurements;
+
+import com.peacetrack.R;
+import com.peacetrack.R.id;
+import com.peacetrack.R.layout;
+import com.peacetrack.views.activities.AddActivityActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
