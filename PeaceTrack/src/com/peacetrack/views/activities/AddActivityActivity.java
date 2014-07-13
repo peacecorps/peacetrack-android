@@ -3,10 +3,6 @@
  */
 package com.peacetrack.views.activities;
 
-import com.peacetrack.R;
-import com.peacetrack.R.id;
-import com.peacetrack.R.layout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import com.peacetrack.R;
 
 /**
  * @author Pooja

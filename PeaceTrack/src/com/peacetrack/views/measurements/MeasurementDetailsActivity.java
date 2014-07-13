@@ -3,17 +3,15 @@
  */
 package com.peacetrack.views.measurements;
 
-import com.peacetrack.R;
-import com.peacetrack.R.id;
-import com.peacetrack.R.layout;
-import com.peacetrack.views.activities.AddActivityActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.peacetrack.R;
+import com.peacetrack.views.activities.AddActivityActivity;
 
 /**
  * @author Pooja

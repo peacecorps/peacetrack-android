@@ -1,11 +1,5 @@
 package com.peacetrack.views.activities;
 
-import com.peacetrack.R;
-import com.peacetrack.R.id;
-import com.peacetrack.R.layout;
-import com.peacetrack.R.menu;
-import com.peacetrack.views.welcome.WelcomeActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -14,6 +8,9 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.peacetrack.R;
+import com.peacetrack.views.welcome.WelcomeActivity;
 
 /**
  * @author Pooja

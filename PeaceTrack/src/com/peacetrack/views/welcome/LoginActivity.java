@@ -2,12 +2,6 @@ package com.peacetrack.views.welcome;
 
 import java.util.List;
 
-import com.peacetrack.R;
-import com.peacetrack.R.id;
-import com.peacetrack.R.layout;
-import com.peacetrack.R.string;
-import com.peacetrack.backend.indicators.IndicatorsDBHandler;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.peacetrack.R;
+import com.peacetrack.backend.indicators.IndicatorsDBHandler;
 
 /**
  * @author Pooja
@@ -73,13 +70,23 @@ public class LoginActivity extends ActionBarActivity implements
 
 			@Override
 			public void onClick(View v) {
+
+				if (nameEditText.getText().length() == 0
+						&& (emailEditText.getText().length() == 0 || !isEmailValid((CharSequence) emailEditText
+								.getText()))) {
+					Toast.makeText(LoginActivity.this,
+							getString(R.string.nameandemailcheck),
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
 				if (nameEditText.getText().length() == 0) {
 					Toast.makeText(LoginActivity.this,
 							getString(R.string.namecheck), Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
-				if (emailEditText.getText().length() == 0 || !isEmailValid((CharSequence) emailEditText.getText())) {
+				if (emailEditText.getText().length() == 0
+						|| !isEmailValid((CharSequence) emailEditText.getText())) {
 					Toast.makeText(LoginActivity.this,
 							getString(R.string.emailcheck), Toast.LENGTH_SHORT)
 							.show();
@@ -87,9 +94,11 @@ public class LoginActivity extends ActionBarActivity implements
 				}
 
 				/*
-				 * This would make sure that this login page launches only once when the user downloads the application.
-				 * Add a check on these preferences in main activity. If and only if these shared preferences are missing , 
-				 * will the application launch the first login page.
+				 * This would make sure that this login page launches only once
+				 * when the user downloads the application. Add a check on these
+				 * preferences in main activity i.e. welcome activity. If and
+				 * only if these shared preferences are missing , will the
+				 * application launch the first login page.
 				 */
 				SharedPreferences prefs = PreferenceManager
 						.getDefaultSharedPreferences(LoginActivity.this);

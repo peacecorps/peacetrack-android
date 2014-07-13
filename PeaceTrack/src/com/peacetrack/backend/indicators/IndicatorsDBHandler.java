@@ -10,13 +10,13 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.peacetrack.models.indicators.Indicators;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.peacetrack.models.indicators.Indicators;
 
 /**
  * @author Pooja
@@ -25,7 +25,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	private String databasePath;
-	private static String DB_NAME = "indicators1.sqlite";
+	private static String DB_NAME = "indicators.sqlite";
 	private SQLiteDatabase sqLiteDatabase;
 	private final Context context;
 
@@ -39,8 +39,7 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		} catch (IOException e) {
 			throw new Error("Unable to create database");
 		}
-		
-		
+
 		closeDB();
 	}
 
@@ -49,31 +48,27 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 	 * database.
 	 * */
 	public void createDataBase() throws IOException {
-		
-			this.sqLiteDatabase = this.getReadableDatabase();
 
-			try {
-				copyDataBaseToSystem();
-			} catch (IOException e) {
-				throw new Error("Error!! Could not copy database to the system");
-			}
-		
-	}
-	/*public void createDataBase() throws IOException {
-		boolean dbExist = checkDataBase();
+		this.sqLiteDatabase = this.getReadableDatabase();
 
-		if (dbExist) {
-			openDB();
-		} else {
-			this.sqLiteDatabase = this.getReadableDatabase();
-
-			try {
-				copyDataBaseToSystem();
-			} catch (IOException e) {
-				throw new Error("Error!! Could not copy database to the system");
-			}
+		try {
+			copyDataBaseToSystem();
+		} catch (IOException e) {
+			throw new Error("Error!! Could not copy database to the system");
 		}
-	}*/
+
+	}
+
+	/*
+	 * public void createDataBase() throws IOException { boolean dbExist =
+	 * checkDataBase();
+	 * 
+	 * if (dbExist) { openDB(); } else { this.sqLiteDatabase =
+	 * this.getReadableDatabase();
+	 * 
+	 * try { copyDataBaseToSystem(); } catch (IOException e) { throw new
+	 * Error("Error!! Could not copy database to the system"); } } }
+	 */
 
 	/**
 	 * Check if the database already exist to avoid re-copying the file each
@@ -128,11 +123,11 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	}
 
-	/*public void openDataBase() throws SQLException {
-		// Open the database
-		sqLiteDatabase = SQLiteDatabase.openDatabase(databasePath,
-				null, SQLiteDatabase.OPEN_READONLY);
-	}*/
+	/*
+	 * public void openDataBase() throws SQLException { // Open the database
+	 * sqLiteDatabase = SQLiteDatabase.openDatabase(databasePath, null,
+	 * SQLiteDatabase.OPEN_READONLY); }
+	 */
 
 	@Override
 	public synchronized void close() {
@@ -143,26 +138,26 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		//Indicators.onCreate(db);
+		// Indicators.onCreate(db);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		//Indicators.onUpgrade(db, oldVersion, newVersion);
+		// Indicators.onUpgrade(db, oldVersion, newVersion);
 	}
 
 	private void openDB() {
-        if (!sqLiteDatabase.isOpen()) {
-            sqLiteDatabase = this.getReadableDatabase();
-        }
-    }
+		if (!sqLiteDatabase.isOpen()) {
+			sqLiteDatabase = this.getReadableDatabase();
+		}
+	}
 
-    private void closeDB() {
-        if (sqLiteDatabase.isOpen()) {
-            sqLiteDatabase.close();
-        }
-    }
-    
+	private void closeDB() {
+		if (sqLiteDatabase.isOpen()) {
+			sqLiteDatabase.close();
+		}
+	}
+
 	public List<String> getAllPosts() {
 		openDB();
 		List<String> allPosts = null;
@@ -172,10 +167,10 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		try {
 			Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
 			allPosts = extractStrings(cursor);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw new Error("Error in cursor ");
 		}
-		
+
 		closeDB();
 		return allPosts;
 	}

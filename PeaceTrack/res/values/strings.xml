@@ -6,15 +6,18 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
-    <string name="name">Username</string>
+    <string name="name">Name</string>
     <string name="email">E-mail</string>
+    <string name="addacountbutton">Add Acount</string>
     
     <string name="namecheck">Please Enter Your Name</string>
-    <string name="emailcheck">Please enter valid email id</string>
+    <string name="emailcheck">Please Enter Valid Email Id</string>
+    <string name="nameandemailcheck">Please Enter Your Name And Valid Email Id</string>
     
     <string name="cohort">My Cohorts</string>
-    <string name="activity">My Activities</string>
-    <string name="measurement">My Measurements</string>
+    <string name="impact">My Impacts</string>
+    <string name="quickactivity">Quickly Add Activity</string>
+    <string name="quickmeasurement">Quickly Add  Measurement</string>
     <string name="sector">Sector</string>
     <string name="post">Post</string>
     <string name="login">Login</string>
