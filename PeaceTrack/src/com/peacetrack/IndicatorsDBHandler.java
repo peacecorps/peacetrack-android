@@ -12,7 +12,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -30,8 +29,17 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	public IndicatorsDBHandler(Context context) {
 		super(context, DB_NAME, null, 1);
-		databasePath = context.getDatabasePath(DB_NAME).getAbsolutePath();
+		this.databasePath = context.getDatabasePath(DB_NAME).getAbsolutePath();
 		this.context = context;
+		this.sqLiteDatabase = this.getReadableDatabase();
+		try {
+			this.createDataBase();
+		} catch (IOException e) {
+			throw new Error("Unable to create database");
+		}
+		
+		
+		closeDB();
 	}
 
 	/**
@@ -42,9 +50,9 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		boolean dbExist = checkDataBase();
 
 		if (dbExist) {
-			// do nothing
+			openDB();
 		} else {
-			this.getReadableDatabase();
+			this.sqLiteDatabase = this.getReadableDatabase();
 
 			try {
 				copyDataBaseToSystem();
@@ -64,7 +72,7 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		SQLiteDatabase checkDB = null;
 
 		try {
-			checkDB = SQLiteDatabase.openDatabase(databasePath + DB_NAME, null,
+			checkDB = SQLiteDatabase.openDatabase(databasePath, null,
 					SQLiteDatabase.OPEN_READONLY);
 
 		} catch (SQLiteException e) {
@@ -88,7 +96,7 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		InputStream myInput = context.getAssets().open(DB_NAME);
 
 		// Path to the just created empty db
-		String outFileName = databasePath + DB_NAME;
+		String outFileName = databasePath;
 
 		// Open the empty db as the output stream
 		OutputStream myOutput = new FileOutputStream(outFileName);
@@ -107,11 +115,11 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	}
 
-	public void openDataBase() throws SQLException {
+	/*public void openDataBase() throws SQLException {
 		// Open the database
-		sqLiteDatabase = SQLiteDatabase.openDatabase(databasePath + DB_NAME,
+		sqLiteDatabase = SQLiteDatabase.openDatabase(databasePath,
 				null, SQLiteDatabase.OPEN_READONLY);
-	}
+	}*/
 
 	@Override
 	public synchronized void close() {
@@ -122,40 +130,57 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		Indicators.onCreate(db);
+		//Indicators.onCreate(db);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Indicators.onUpgrade(db, oldVersion, newVersion);
+		//Indicators.onUpgrade(db, oldVersion, newVersion);
 	}
 
+	private void openDB() {
+        if (!sqLiteDatabase.isOpen()) {
+            sqLiteDatabase = this.getReadableDatabase();
+        }
+    }
+
+    private void closeDB() {
+        if (sqLiteDatabase.isOpen()) {
+            sqLiteDatabase.close();
+        }
+    }
+    
 	public List<String> getAllPosts() {
-		sqLiteDatabase = this.getReadableDatabase();
+		openDB();
 		List<String> allPosts = null;
 		String queryString = "select distinct " + Indicators.COLUMN_POST
 				+ " from " + Indicators.INDICATORS_TABLE + " order by "
 				+ Indicators.COLUMN_POST + " asc";
-		Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
-		allPosts = extractStrings(cursor);
-		sqLiteDatabase.close();
+		try {
+			Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
+			allPosts = extractStrings(cursor);
+		} catch(Exception e) {
+			throw new Error("Error in cursor ");
+		}
+		
+		closeDB();
 		return allPosts;
 	}
 
 	public List<String> getAllSectors() {
-		sqLiteDatabase = this.getReadableDatabase();
+		openDB();
 		List<String> allSectors = null;
 		String queryString = "select distinct " + Indicators.COLUMN_SECTOR
 				+ " from " + Indicators.INDICATORS_TABLE + " order by "
 				+ Indicators.COLUMN_SECTOR + " asc";
 		Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
 		allSectors = extractStrings(cursor);
-		sqLiteDatabase.close();
+		closeDB();
 		return allSectors;
 	}
 
 	public List<String> getAllSectorsForPost(String post) {
-		sqLiteDatabase = this.getReadableDatabase();
+		openDB();
 		List<String> allSectors = null;
 		String queryString = "select distinct " + Indicators.COLUMN_PROJECT
 				+ " from " + Indicators.INDICATORS_TABLE + " where "
@@ -163,7 +188,7 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 				+ Indicators.COLUMN_PROJECT + " asc";
 		Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
 		allSectors = extractStrings(cursor);
-		sqLiteDatabase.close();
+		closeDB();
 		return allSectors;
 	}
 

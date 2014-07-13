@@ -3,9 +3,6 @@
  */
 package com.peacetrack;
 
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-
 /*
  * ***************************************
  * Models the representation of indicators
@@ -33,10 +30,10 @@ public class Indicators {
 	public static final String COLUMN_OBJECTIVE = "objective";
 	public static final String COLUMN_INDICATOR = "indicator";
 
-	// Database creation sql statement
-	private static final String DATABASE_CREATE = "create table if not exists "
-			+ COLUMN_ID + " integer primary key autoincrement, "
-			+ INDICATORS_TABLE + "(" + COLUMN_POST + " text, " + COLUMN_SECTOR
+	/*// Database creation sql statement
+	private static final String DATABASE_CREATE = "create table if not exists "			
+			+ INDICATORS_TABLE + "(" + COLUMN_ID + " integer primary key autoincrement," 
+			+ COLUMN_POST + " text, " + COLUMN_SECTOR
 			+ " text, " + COLUMN_PROJECT + " text, " + COLUMN_GOAL + " text, "
 			+ COLUMN_OBJECTIVE + " text, " + COLUMN_INDICATOR + " text" + ");";
 
@@ -56,7 +53,7 @@ public class Indicators {
 		database.execSQL("drop table if exists " + INDICATORS_TABLE);
 		onCreate(database);
 	}
-
+*/
 	// Getters and Setters
 	public Indicators() {
 		super();
