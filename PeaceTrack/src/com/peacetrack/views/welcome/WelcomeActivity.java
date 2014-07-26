@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.peacetrack.R;
 import com.peacetrack.views.activities.AddActivityActivity;
-import com.peacetrack.views.cohorts.AllCohortsActivity;
+import com.peacetrack.views.cohorts.ListCohortsActivity;
 import com.peacetrack.views.measurements.AddMeasurementActivity;
 
 /**
@@ -61,7 +61,7 @@ public class WelcomeActivity extends ActionBarActivity implements
 	public void onClick(View v) {
 		int id = v.getId();
 		if (id == R.id.cohortsbutton) {
-			Intent intent = new Intent(this, AllCohortsActivity.class);
+			Intent intent = new Intent(this, ListCohortsActivity.class);
 			this.startActivity(intent);
 		} else if (id == R.id.impactbutton) {
 			// TODO: Have to add view for my impacts page i.e. where one could

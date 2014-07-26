@@ -28,7 +28,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name" />
         <activity
-            android:name="com.peacetrack.views.cohorts.AllCohortsActivity"
+            android:name="com.peacetrack.views.cohorts.ListCohortsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/allcohortsactivity_label" />
         <activity

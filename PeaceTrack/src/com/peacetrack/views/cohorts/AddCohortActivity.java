@@ -3,22 +3,32 @@
  */
 package com.peacetrack.views.cohorts;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.peacetrack.R;
+import com.peacetrack.backend.cohorts.CohortsDAO;
+import com.peacetrack.models.cohorts.Cohorts;
 
 /**
  * @author Pooja
  * 
  */
 public class AddCohortActivity extends ActionBarActivity implements
-		OnClickListener {
+		OnItemSelectedListener {
 
+	protected Cohorts cohort;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,8 +40,42 @@ public class AddCohortActivity extends ActionBarActivity implements
 		super.onResume();
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-	}
+		
+		Button addCohortButton = (Button) findViewById(R.id.savecohortbutton);
+		final EditText nameEditText = (EditText) findViewById(R.id.cohortname);
+		final EditText descriptionEditText = (EditText) findViewById(R.id.cohortdescription);
+		cohort = new Cohorts();
+		
+		
+		addCohortButton.setOnClickListener(new View.OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+					String name = nameEditText.getText().toString();
+					if(nameEditText.getText().length() == 0) {
+						Toast.makeText(AddCohortActivity.this,
+								getString(R.string.namecheck),
+								Toast.LENGTH_SHORT).show();
+						return;
+					}
+					
+					if(checkExistingCohort(name)) {
+						Toast.makeText(AddCohortActivity.this,
+								getString(R.string.duplicatecohortcheck),
+								Toast.LENGTH_SHORT).show();
+						return;
+					}
+					cohort.setName(name);
+					cohort.setDescription(descriptionEditText.getText().toString());
+					
+					saveCohort();
+					Intent intent = new Intent(AddCohortActivity.this, ListCohortsActivity.class);
+					AddCohortActivity.this.startActivity(intent);
+				
+			}
+	});
+
+	}
 	/*
 	 * public boolean onCreateOptionsMenu(Menu menu) { MenuInflater menuInflater
 	 * = getMenuInflater(); menuInflater.inflate(R.menu.addmenu, menu);
@@ -49,18 +93,46 @@ public class AddCohortActivity extends ActionBarActivity implements
 		int itemId = item.getItemId();
 		if (itemId == android.R.id.home) {
 			// app icon in action bar clicked; go home
-			Intent intent = new Intent(this, AllCohortsActivity.class);
+			Intent intent = new Intent(this, ListCohortsActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
-		} else {
-			return super.onOptionsItemSelected(item);
+		}else {
 		}
+			return super.onOptionsItemSelected(item);
+		
+	}
+
+
+	private void saveCohort() {
+	    CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
+	    cohortsDAO.addCohort(cohort);
+	    finish();
+	  }
+	
+	private boolean checkExistingCohort(String name) {
+		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
+		ArrayList<Cohorts> allCohorts = cohortsDAO.getAllCohorts();
+		
+		for (int i = 0; i < allCohorts.size(); i++) {
+		      if (allCohorts.get(i).getName().toLowerCase()
+		              .matches(".*" + name.toLowerCase() + ".*")) {
+		    	  return true;
+		      }
+		    }
+		return false;
 	}
 
 	@Override
-	public void onClick(View v) {
+	public void onItemSelected(AdapterView<?> parent, View view, int position,
+			long id) {
 		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {
+		// TODO Auto-generated method stub
+		
 	}
 }
