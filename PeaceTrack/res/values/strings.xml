@@ -11,7 +11,7 @@
     <string name="addacountbutton">Add Acount</string>
     
     <string name="namecheck">Please Enter Your Name</string>
-    <string name="duplicatecohortcheck">This Cohort Already Exists.Please use a different name</string>
+    <string name="duplicatecohortcheck">This Cohort Already Exists. Please use a different name</string>
     <string name="emailcheck">Please Enter Valid Email Id</string>
     <string name="nameandemailcheck">Please Enter Your Name And Valid Email Id</string>
     

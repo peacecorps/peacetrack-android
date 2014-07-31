@@ -1,11 +1,10 @@
-
 package com.peacetrack.backend;
-
-import com.peacetrack.models.cohorts.Cohorts;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.peacetrack.models.cohorts.Cohorts;
 
 /*
  * @author Pooja
@@ -31,26 +30,28 @@ public class CommonDatabaseHelper extends SQLiteOpenHelper {
 		commonDatabaseHelper = new CommonDatabaseHelper(context);
 		return commonDatabaseHelper;
 	}
-	
-	//When database is created this mentod will be called and within this method further methods will be called to create tables(in case they are not)
+
+	// When database is created this mentod will be called and within this
+	// method further methods will be called to create tables(in case they are
+	// not)
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		Cohorts.onCreate(db);
 
 	}
 
-	//Method called during upgradation
+	// Method called during upgradation
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}
 
 	@Override
-	  public void onOpen(SQLiteDatabase database) {
-	    super.onOpen(database);
-	    if (!database.isReadOnly()) {
-	      // Enable foreign key constraints
-	      database.execSQL("PRAGMA foreign_keys=ON;");
-	    }
-	  }
+	public void onOpen(SQLiteDatabase database) {
+		super.onOpen(database);
+		if (!database.isReadOnly()) {
+			// Enable foreign key constraints
+			database.execSQL("PRAGMA foreign_keys=ON;");
+		}
+	}
 
 }

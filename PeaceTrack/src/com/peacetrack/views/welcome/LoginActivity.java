@@ -20,7 +20,7 @@ import com.peacetrack.R;
 import com.peacetrack.backend.indicators.IndicatorsDBHandler;
 
 /**
- * 		   @author Pooja
+ * @author Pooja
  * 
  *         First screen that volunteer sees, which takes his/her name, country
  *         and sector as an input.

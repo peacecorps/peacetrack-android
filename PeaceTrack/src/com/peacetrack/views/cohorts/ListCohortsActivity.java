@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 import com.peacetrack.R;
@@ -41,10 +40,10 @@ public class ListCohortsActivity extends ActionBarActivity {
 		super.onResume();
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
 		cohortsListView = (ListView) findViewById(R.id.cohortslistView);
 		createCohortsList();
-		
+
 	}
 
 	@Override
@@ -106,15 +105,17 @@ public class ListCohortsActivity extends ActionBarActivity {
 		allCohorts = cohortsDAO.getAllCohorts();
 		int i = 0;
 		String[] cohortNames = new String[allCohorts.size()];
-		
-		for(Cohorts cohort : allCohorts) {
+
+		for (Cohorts cohort : allCohorts) {
 			cohortNames[i++] = cohort.getName();
 		}
-		/*String[] cohortNames = new String[] { "Android", "iPhone", "WindowsMobile",
-		        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-		        "Linux", "OS/2" };*/
+		/*
+		 * String[] cohortNames = new String[] { "Android", "iPhone",
+		 * "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7",
+		 * "Max OS X", "Linux", "OS/2" };
+		 */
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-		        android.R.layout.simple_list_item_1, cohortNames);
+				android.R.layout.simple_list_item_1, cohortNames);
 		cohortsListView.setAdapter(adapter);
 	}
 

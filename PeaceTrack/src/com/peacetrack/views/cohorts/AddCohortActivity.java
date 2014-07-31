@@ -28,7 +28,7 @@ public class AddCohortActivity extends ActionBarActivity implements
 		OnItemSelectedListener {
 
 	protected Cohorts cohort;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,42 +40,44 @@ public class AddCohortActivity extends ActionBarActivity implements
 		super.onResume();
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
 		Button addCohortButton = (Button) findViewById(R.id.savecohortbutton);
 		final EditText nameEditText = (EditText) findViewById(R.id.cohortname);
 		final EditText descriptionEditText = (EditText) findViewById(R.id.cohortdescription);
-		cohort = new Cohorts();
 		
-		
+
 		addCohortButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-					String name = nameEditText.getText().toString();
-					if(nameEditText.getText().length() == 0) {
-						Toast.makeText(AddCohortActivity.this,
-								getString(R.string.namecheck),
-								Toast.LENGTH_SHORT).show();
-						return;
-					}
-					
-					if(checkExistingCohort(name)) {
-						Toast.makeText(AddCohortActivity.this,
-								getString(R.string.duplicatecohortcheck),
-								Toast.LENGTH_SHORT).show();
-						return;
-					}
-					cohort.setName(name);
-					cohort.setDescription(descriptionEditText.getText().toString());
-					
-					saveCohort();
-					Intent intent = new Intent(AddCohortActivity.this, ListCohortsActivity.class);
-					AddCohortActivity.this.startActivity(intent);
-				
+				cohort = new Cohorts();
+				String name = nameEditText.getText().toString();
+				if (nameEditText.getText().length() == 0) {
+					Toast.makeText(AddCohortActivity.this,
+							getString(R.string.namecheck), Toast.LENGTH_SHORT)
+							.show();
+					return;
+				}
+
+				if (checkExistingCohort(name)) {
+					Toast.makeText(AddCohortActivity.this,
+							getString(R.string.duplicatecohortcheck),
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
+				cohort.setName(name);
+				cohort.setDescription(descriptionEditText.getText().toString());
+
+				saveCohort();
+				Intent intent = new Intent(AddCohortActivity.this,
+						ListCohortsActivity.class);
+				AddCohortActivity.this.startActivity(intent);
+
 			}
-	});
+		});
 
 	}
+
 	/*
 	 * public boolean onCreateOptionsMenu(Menu menu) { MenuInflater menuInflater
 	 * = getMenuInflater(); menuInflater.inflate(R.menu.addmenu, menu);
@@ -97,29 +99,27 @@ public class AddCohortActivity extends ActionBarActivity implements
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
-		}else {
+		} else {
 		}
-			return super.onOptionsItemSelected(item);
-		
+		return super.onOptionsItemSelected(item);
+
 	}
 
-
 	private void saveCohort() {
-	    CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
-	    cohortsDAO.addCohort(cohort);
-	    finish();
-	  }
-	
+		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
+		cohortsDAO.addCohort(cohort);
+		finish();
+	}
+
 	private boolean checkExistingCohort(String name) {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
 		ArrayList<Cohorts> allCohorts = cohortsDAO.getAllCohorts();
-		
+
 		for (int i = 0; i < allCohorts.size(); i++) {
-		      if (allCohorts.get(i).getName().toLowerCase()
-		              .matches(".*" + name.toLowerCase() + ".*")) {
-		    	  return true;
-		      }
-		    }
+			if (allCohorts.get(i).getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -127,12 +127,12 @@ public class AddCohortActivity extends ActionBarActivity implements
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
