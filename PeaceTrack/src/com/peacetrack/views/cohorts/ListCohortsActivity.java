@@ -4,16 +4,27 @@
 package com.peacetrack.views.cohorts;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
+import android.util.SparseBooleanArray;
+import android.view.ActionMode;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AbsListView.MultiChoiceModeListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.peacetrack.R;
@@ -28,13 +39,25 @@ import com.peacetrack.views.welcome.WelcomeActivity;
 public class ListCohortsActivity extends ActionBarActivity {
 	protected ListView cohortsListView;
 	protected ArrayList<Cohorts> allCohorts;
-
+	protected ArrayAdapter<String> adapter;
+	protected List<String> cohortNames;
+	protected CohortsDAO cohortsDAO;
+	protected ContextMenuInfo tempmenuinfo;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listcohorts);
+		registerForContextMenu((ListView) findViewById(R.id.cohortslistView));
+		//createCohortsList();		
 	}
 
+	 @Override
+	public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo) {
+	        //getSupportActionBar().setSubtitle(
+	        //        "Position: " + ((AdapterContextMenuInfo) menuInfo).position);
+		 tempmenuinfo = menuInfo;
+	}
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -43,6 +66,62 @@ public class ListCohortsActivity extends ActionBarActivity {
 
 		cohortsListView = (ListView) findViewById(R.id.cohortslistView);
 		createCohortsList();
+		
+		cohortsListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+		cohortsListView.setMultiChoiceModeListener(new MultiChoiceModeListener() {
+
+		    @Override
+		    public void onItemCheckedStateChanged(ActionMode mode, int position,
+		                                          long id, boolean checked) {
+		        // Here you can do something when items are selected/de-selected,
+		        // such as update the title in the CAB
+		    	// Capture total checked items
+                final int checkedCount = cohortsListView.getCheckedItemCount();
+                // Set the CAB title according to total checked items
+                mode.setTitle(checkedCount + " Selected");
+		    }
+
+		    @Override
+		    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+		        // Respond to clicks on the actions in the CAB
+		        switch (item.getItemId()) {
+		            case R.id.action_delete:		            	
+		                deleteSelectedItems(item);
+		                mode.finish(); // Action picked, so close the CAB
+		                return true;
+		            case R.id.action_edit:
+		            	Intent intent = new Intent(ListCohortsActivity.this, AddCohortActivity.class);
+		    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		    			startActivity(intent);
+		    			editSelectedItem();
+		            	mode.finish();
+		            	return true;
+		            default:
+		                return false;
+		        }
+		    }
+
+		    @Override
+		    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+		        // Inflate the menu for the CAB
+		        MenuInflater inflater = mode.getMenuInflater();
+		        inflater.inflate(R.menu.cab_allcohortsmenu, menu);
+		        return true;
+		    }
+
+		    @Override
+		    public void onDestroyActionMode(ActionMode mode) {
+		        // Here you can make any necessary updates to the activity when
+		        // the CAB is removed. By default, selected items are deselected/unchecked.
+		    }
+
+		    @Override
+		    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+		        // Here you can perform updates to the CAB due to
+		        // an invalidate() request
+		        return false;
+		    }
+		});
 
 	}
 
@@ -101,22 +180,42 @@ public class ListCohortsActivity extends ActionBarActivity {
 	}
 
 	public void createCohortsList() {
-		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
+		cohortsDAO = new CohortsDAO(getApplicationContext());
 		allCohorts = cohortsDAO.getAllCohorts();
-		int i = 0;
-		String[] cohortNames = new String[allCohorts.size()];
-
+		
+		cohortNames = new ArrayList<String>();
+		
 		for (Cohorts cohort : allCohorts) {
-			cohortNames[i++] = cohort.getName();
+			cohortNames.add(cohort.getName());
 		}
-		/*
-		 * String[] cohortNames = new String[] { "Android", "iPhone",
-		 * "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7",
-		 * "Max OS X", "Linux", "OS/2" };
-		 */
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		
+		//Ideally allcohorts should go in the adapter
+		
+		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, cohortNames);
 		cohortsListView.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
 	}
-
+	
+	private void deleteSelectedItems(MenuItem item) {
+		//final int position = cohortsListView.getPositionForView(cohortsListView);		
+		
+		AdapterView.AdapterContextMenuInfo menuInfo;
+	
+		menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
+		//int position = menuInfo.position;
+		int position = ((AdapterContextMenuInfo)tempmenuinfo).position;
+		String cohort = adapter.getItem(position);
+		allCohorts.remove(position);
+		cohortNames.remove(position);
+		//Ideally allcohorts should go in the adapter so this redundant
+		
+		//finish();
+		//startActivity(getIntent());
+		adapter.notifyDataSetChanged();
+	}
+	
+	private void editSelectedItem() {
+		
+	}
 }

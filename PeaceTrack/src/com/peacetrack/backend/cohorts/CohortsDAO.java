@@ -117,7 +117,7 @@ public class CohortsDAO {
 		ContentValues contentValues = new ContentValues(2);
 		contentValues.put(Cohorts.COLUMN_NAME, cohort.getName());
 		contentValues.put(Cohorts.COLUMN_DESCRIPTION, cohort.getDescription());
-		// TODO:check that this cohort does not exist already
+		
 		writeDatabase.insert(Cohorts.COHORTS_TABLE, null, contentValues);
 
 		closeDB();
@@ -127,7 +127,7 @@ public class CohortsDAO {
 	 * Method to update/modify an existing cohort. This will use cohort ID in
 	 * where clause.
 	 */
-	public void updateProject(Cohorts cohort) {
+	public void updateCohort(Cohorts cohort) {
 		openDB();
 
 		ContentValues contentValues = new ContentValues(2);
