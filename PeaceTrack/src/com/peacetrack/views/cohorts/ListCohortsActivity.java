@@ -6,6 +6,8 @@ package com.peacetrack.views.cohorts;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -22,6 +24,8 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ListView;
 
 import com.peacetrack.R;
@@ -46,6 +50,7 @@ public class ListCohortsActivity extends ActionBarActivity {
 
 	protected ContextMenuInfo tempmenuinfo;
 
+	protected int checkedCount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,14 +84,16 @@ public class ListCohortsActivity extends ActionBarActivity {
 					@Override
 					public void onItemCheckedStateChanged(ActionMode mode,
 							int position, long id, boolean checked) {
-						// Here you can do something when items are
-						// selected/de-selected,
-						// such as update the title in the CAB
-						// Capture total checked items
-						final int checkedCount = cohortsListView
+						/**
+						 *  Here you can do something when items are selected/de-selected,
+						 *  such as update the title in the CAB Capture total checked items
+						 */
+						checkedCount = cohortsListView
 								.getCheckedItemCount();
 						// Set the CAB title according to total checked items
 						mode.setTitle(checkedCount + " Selected");
+						
+						mode.invalidate();
 					}
 
 					@Override
@@ -101,10 +108,11 @@ public class ListCohortsActivity extends ActionBarActivity {
 						case R.id.action_edit:
 							SparseBooleanArray checkedPositions = cohortsListView.getCheckedItemPositions();
 							Cohorts cohort = allCohorts.get(checkedPositions.keyAt(0));
-
+							String id = Integer.toString(cohort.getId());
+							
 							Intent intent = new Intent(	ListCohortsActivity.this,EditCohortActivity.class);
 							intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-							String id = Integer.toString(cohort.getId());
+							
 							intent.putExtra("name", cohort.getName());
 							intent.putExtra("description",cohort.getDescription());
 							intent.putExtra("id", id);
@@ -138,7 +146,15 @@ public class ListCohortsActivity extends ActionBarActivity {
 							Menu menu) {
 						// Here you can perform updates to the CAB due to
 						// an invalidate() request
-						return false;
+						if (checkedCount == 1){
+						       MenuItem item = menu.findItem(R.id.action_edit);
+						       item.setVisible(true);
+						       return true;
+						   } else {
+						       MenuItem item = menu.findItem(R.id.action_edit);
+						       item.setVisible(false);
+						       return true;
+						   }
 					}
 				});
 
@@ -155,13 +171,13 @@ public class ListCohortsActivity extends ActionBarActivity {
 		SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query) {
-				// TODO
-				return true;
+				return false;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String newText) {
-				// TODO
+				Filter filter = adapter.getFilter();
+				filter.filter(newText);
 				return true;
 			}
 		};
@@ -169,10 +185,11 @@ public class ListCohortsActivity extends ActionBarActivity {
 		MenuItem searchItem = menu.findItem(R.id.action_search);
 		SearchView searchView = (SearchView) MenuItemCompat
 				.getActionView(searchItem);
+		cohortsListView.setTextFilterEnabled(false);
+		searchView.setIconifiedByDefault(true);
+        searchView.setSubmitButtonEnabled(false);
 		searchView.setOnQueryTextListener(queryTextListener);
-
-		final MenuItem addCohort = menu.findItem(R.id.action_addcohort);
-
+		
 		getSupportActionBar().setDisplayShowTitleEnabled(true);
 		return true;
 	}
@@ -217,6 +234,7 @@ public class ListCohortsActivity extends ActionBarActivity {
 	}
 
 	private void deleteSelectedItems() {
+		
 		SparseBooleanArray checkedPositions = cohortsListView
 				.getCheckedItemPositions();
 
@@ -229,6 +247,40 @@ public class ListCohortsActivity extends ActionBarActivity {
 		}
 
 		adapter.notifyDataSetChanged();
+		
+		/*AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("Delete Cohort");
+		alert.setMessage("Are you sure you want to delete this?");
+
+		alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+
+			SparseBooleanArray checkedPositions = cohortsListView
+					.getCheckedItemPositions();
+
+			for (int i = 0; i < checkedPositions.size(); ++i) {
+				int position = checkedPositions.keyAt(i);
+				Cohorts cohort = allCohorts.get(position);
+				cohortsDAO.deleteCohort(cohort);
+				allCohorts.remove(position);
+				cohortNames.remove(position);
+			}
+
+			//adapter.notifyDataSetChanged();
+			
+		  }
+		});
+
+		alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    // Canceled.
+		  }
+		});
+
+		alert.show();
+		adapter.notifyDataSetChanged();*/
+		
 	}
 
 	

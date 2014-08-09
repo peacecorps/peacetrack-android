@@ -73,12 +73,13 @@ public class EditCohortActivity extends ActionBarActivity implements
 					return;
 				}
 
-				if (checkExistingCohort(newName)) {
+				if (checkExistingCohort(newName) && cohortDescription.equals(newDescription)) {
 					Toast.makeText(EditCohortActivity.this,
 							getString(R.string.duplicatecohortcheck),
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
+				
 				cohort.setName(newName);
 				cohort.setDescription(newDescription);
 				cohort.setId(Integer.parseInt(cohortId));

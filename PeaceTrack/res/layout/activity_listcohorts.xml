@@ -8,7 +8,9 @@
         android:id="@+id/cohortslistView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/lightgrey"
-        android:dividerHeight="0dp" />
+        android:divider="@color/darkergrey"
+        android:drawSelectorOnTop="false"
+        android:listSelector="@color/blue"
+        android:dividerHeight="1dp" />
 
 </LinearLayout>
