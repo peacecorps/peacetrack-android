@@ -117,7 +117,7 @@ public class CohortsDAO {
 		ContentValues contentValues = new ContentValues(2);
 		contentValues.put(Cohorts.COLUMN_NAME, cohort.getName());
 		contentValues.put(Cohorts.COLUMN_DESCRIPTION, cohort.getDescription());
-		
+
 		writeDatabase.insert(Cohorts.COHORTS_TABLE, null, contentValues);
 
 		closeDB();

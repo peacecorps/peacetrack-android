@@ -97,15 +97,10 @@ public class Cohorts {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return getName();
 	}
-	
-	
-	
-	
-	
 
 }

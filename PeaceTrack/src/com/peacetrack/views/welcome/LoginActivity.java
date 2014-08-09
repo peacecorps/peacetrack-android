@@ -72,7 +72,7 @@ public class LoginActivity extends ActionBarActivity implements
 			public void onClick(View v) {
 
 				if (nameEditText.getText().length() == 0
-						&& (emailEditText.getText().length() == 0 || !isEmailValid((CharSequence) emailEditText
+						&& (emailEditText.getText().length() == 0 || !isEmailValid(emailEditText
 								.getText()))) {
 					Toast.makeText(LoginActivity.this,
 							getString(R.string.nameandemailcheck),
@@ -86,7 +86,7 @@ public class LoginActivity extends ActionBarActivity implements
 					return;
 				}
 				if (emailEditText.getText().length() == 0
-						|| !isEmailValid((CharSequence) emailEditText.getText())) {
+						|| !isEmailValid(emailEditText.getText())) {
 					Toast.makeText(LoginActivity.this,
 							getString(R.string.emailcheck), Toast.LENGTH_SHORT)
 							.show();

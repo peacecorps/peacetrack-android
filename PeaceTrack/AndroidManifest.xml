@@ -52,9 +52,9 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/addmeasurementactivity_label" />
         <activity
-            android:name="com.peacetrack.views.cohorts.CohortDetailsActivity"
+            android:name="com.peacetrack.views.cohorts.EditCohortActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/cohortdetailsactivity_label" />
+            android:label="@string/addcohortactivity_label" />
         <activity
       		android:name="com.peacetrack.views.measurements.MeasurementDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

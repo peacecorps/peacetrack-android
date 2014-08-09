@@ -24,15 +24,21 @@ import com.peacetrack.models.cohorts.Cohorts;
  * @author Pooja
  * 
  */
-public class AddCohortActivity extends ActionBarActivity implements
+public class EditCohortActivity extends ActionBarActivity implements
 		OnItemSelectedListener {
 
+	protected String cohortName;
+	protected String cohortDescription;
+	protected String cohortId;
 	protected Cohorts cohort;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_addcohort);
+
 	}
 
 	@Override
@@ -41,50 +47,51 @@ public class AddCohortActivity extends ActionBarActivity implements
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-		Button addCohortButton = (Button) findViewById(R.id.savecohortbutton);
+		Button editCohortButton = (Button) findViewById(R.id.savecohortbutton);
 		final EditText nameEditText = (EditText) findViewById(R.id.cohortname);
 		final EditText descriptionEditText = (EditText) findViewById(R.id.cohortdescription);
+		Intent intent = getIntent();
+		cohortName = intent.getStringExtra("name");
+		cohortDescription = intent.getStringExtra("description");
+		cohortId = intent.getStringExtra("id");
 
-		addCohortButton.setOnClickListener(new View.OnClickListener() {
+		nameEditText.setText(cohortName);
+		descriptionEditText.setText(cohortDescription);
+
+		editCohortButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				cohort = new Cohorts();
-				String name = nameEditText.getText().toString();
+				String newName = nameEditText.getText().toString();
+				String newDescription = descriptionEditText.getText().toString();
+				
 				if (nameEditText.getText().length() == 0) {
-					Toast.makeText(AddCohortActivity.this,
+					Toast.makeText(EditCohortActivity.this,
 							getString(R.string.namecheck), Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
 
-				if (checkExistingCohort(name)) {
-					Toast.makeText(AddCohortActivity.this,
+				if (checkExistingCohort(newName)) {
+					Toast.makeText(EditCohortActivity.this,
 							getString(R.string.duplicatecohortcheck),
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				cohort.setName(name);
-				cohort.setDescription(descriptionEditText.getText().toString());
+				cohort.setName(newName);
+				cohort.setDescription(newDescription);
+				cohort.setId(Integer.parseInt(cohortId));
 
-				saveCohort();
-				Intent intent = new Intent(AddCohortActivity.this,
+				updateCohort();
+				Intent intent = new Intent(EditCohortActivity.this,
 						ListCohortsActivity.class);
-				AddCohortActivity.this.startActivity(intent);
+				EditCohortActivity.this.startActivity(intent);
 
 			}
 		});
 
 	}
-
-	/*
-	 * public boolean onCreateOptionsMenu(Menu menu) { MenuInflater menuInflater
-	 * = getMenuInflater(); menuInflater.inflate(R.menu.addmenu, menu);
-	 * 
-	 * getSupportActionBar().setDisplayShowTitleEnabled(true); return true;
-	 * 
-	 * }
-	 */
 
 	/*
 	 * Select the new screen when any icon in action bar is selected.
@@ -104,9 +111,9 @@ public class AddCohortActivity extends ActionBarActivity implements
 
 	}
 
-	private void saveCohort() {
+	private void updateCohort() {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
-		cohortsDAO.addCohort(cohort);
+		cohortsDAO.updateCohort(cohort);
 		finish();
 	}
 
@@ -134,4 +141,5 @@ public class AddCohortActivity extends ActionBarActivity implements
 		// TODO Auto-generated method stub
 
 	}
+
 }
