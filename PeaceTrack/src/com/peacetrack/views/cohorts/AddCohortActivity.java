@@ -58,7 +58,7 @@ public class AddCohortActivity extends ActionBarActivity implements
 					return;
 				}
 
-				if (checkExistingCohort(name)) {
+				if (isExistingCohortName(name)) {
 					Toast.makeText(AddCohortActivity.this,
 							getString(R.string.duplicatecohortcheck),
 							Toast.LENGTH_SHORT).show();
@@ -110,7 +110,7 @@ public class AddCohortActivity extends ActionBarActivity implements
 		finish();
 	}
 
-	private boolean checkExistingCohort(String name) {
+	private boolean isExistingCohortName(String name) {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
 		ArrayList<Cohorts> allCohorts = cohortsDAO.getAllCohorts();
 
