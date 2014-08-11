@@ -2,15 +2,16 @@ package com.peacetrack.models.cohorts;
 
 import android.database.sqlite.SQLiteDatabase;
 
-/*
+/**
  * @author Pooja
  * 
  * *************************************
- * Models the representation Of Cohorts
+ * Models the representation Of Cohort
  * **************************************
+ *
  */
 
-public class Cohorts {
+public class Cohort {
 
 	// Instance Properties
 	private int id; // Used to modify existing cohort
@@ -29,30 +30,41 @@ public class Cohorts {
 
 	public static final String COLUMN_DESCRIPTION = "description";
 
-	// Database Creation - SQL statement
+	/**
+	 * Database Creation - SQL statement
+	 */
 	private static final String DATABASE_CREATE = "create table if not exists "
 			+ COHORTS_TABLE + "(" + COLUMN_ID
 			+ " integer primary key autoincrement, " + COLUMN_NAME
 			+ " text not null, " + COLUMN_DESCRIPTION + " text" + ");";
 
-	// Used to create the table
+	/**
+	 *  Used to create the table
+	 * @param database
+	 */
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(DATABASE_CREATE);
 	}
 
-	// Used to upgrade the table
+	/**
+	 * Used to upgrade the table
+	 * @param database
+	 * @param oldVersion
+	 * @param newVersion
+	 */
 	public static void onUpgrade(SQLiteDatabase database, int oldVersion,
 			int newVersion) {
 		database.execSQL("drop table if exists " + COHORTS_TABLE);
 		onCreate(database);
 	}
 
-	public Cohorts() {
+	public Cohort() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	// Getters and Setters for name and description
+	/**
+	 *  Getters and Setters for name and description
+	 */
 	/**
 	 * @return the id
 	 */

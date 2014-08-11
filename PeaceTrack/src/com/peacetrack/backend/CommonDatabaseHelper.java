@@ -4,9 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.peacetrack.models.cohorts.Cohorts;
+import com.peacetrack.models.cohorts.Cohort;
 
-/*
+/**
  * @author Pooja
  * 
  * ********************************************************************************
@@ -31,16 +31,20 @@ public class CommonDatabaseHelper extends SQLiteOpenHelper {
 		return commonDatabaseHelper;
 	}
 
-	// When database is created this mentod will be called and within this
-	// method further methods will be called to create tables(in case they are
-	// not)
+	/**
+	 *  When database is created this method will be called and within this 
+	 *   method further methods will be called to create tables(in case they are not)
+	 *   
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		Cohorts.onCreate(db);
+		Cohort.onCreate(db);
 
 	}
 
-	// Method called during upgradation
+	/**
+	 * Method called during upgrade
+	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}

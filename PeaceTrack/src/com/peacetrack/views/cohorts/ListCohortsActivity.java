@@ -1,13 +1,8 @@
-/**
- * 
- */
 package com.peacetrack.views.cohorts;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -24,47 +19,49 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
 
 import com.peacetrack.R;
 import com.peacetrack.backend.cohorts.CohortsDAO;
-import com.peacetrack.models.cohorts.Cohorts;
+import com.peacetrack.models.cohorts.Cohort;
 import com.peacetrack.views.welcome.WelcomeActivity;
 
 /**
  * @author Pooja
  * 
+ ***************************************************
+ * Screen to list all the cohorts in local database.
+ * It has some additional buttons - edit,delete .
+ ***************************************************
+ *
  */
 public class ListCohortsActivity extends ActionBarActivity {
-	protected ListView cohortsListView;
+	
+	private ListView cohortsListView;
 
-	protected ArrayList<Cohorts> allCohorts;
+	private ArrayList<Cohort> allCohorts;
 
-	protected ArrayAdapter<String> adapter;
+	private ArrayAdapter<String> adapter;
 
-	protected List<String> cohortNames;
+	private List<String> cohortNames;
 
-	protected CohortsDAO cohortsDAO;
+	private CohortsDAO cohortsDAO;
 
-	protected ContextMenuInfo tempmenuinfo;
+	private ContextMenuInfo tempmenuinfo;
 
-	protected int checkedCount;
+	private int checkedCount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listcohorts);
 		registerForContextMenu(findViewById(R.id.cohortslistView));
-		// createCohortsList();
 	}
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View view,
 			ContextMenuInfo menuInfo) {
-		// getSupportActionBar().setSubtitle(
-		// "Position: " + ((AdapterContextMenuInfo) menuInfo).position);
 		tempmenuinfo = menuInfo;
 	}
 
@@ -84,7 +81,7 @@ public class ListCohortsActivity extends ActionBarActivity {
 					@Override
 					public void onItemCheckedStateChanged(ActionMode mode,
 							int position, long id, boolean checked) {
-						/**
+						/*
 						 *  Here you can do something when items are selected/de-selected,
 						 *  such as update the title in the CAB Capture total checked items
 						 */
@@ -107,15 +104,17 @@ public class ListCohortsActivity extends ActionBarActivity {
 							return true;
 						case R.id.action_edit:
 							SparseBooleanArray checkedPositions = cohortsListView.getCheckedItemPositions();
-							Cohorts cohort = allCohorts.get(checkedPositions.keyAt(0));
-							String id = Integer.toString(cohort.getId());
+							Cohort cohort = allCohorts.get(checkedPositions.keyAt(0));
 							
 							Intent intent = new Intent(	ListCohortsActivity.this,EditCohortActivity.class);
 							intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 							
+							/*
+							 * Parameters passed here could be used in another activity EditCohortActivity.
+							 */
 							intent.putExtra("name", cohort.getName());
 							intent.putExtra("description",cohort.getDescription());
-							intent.putExtra("id", id);
+							intent.putExtra("id",cohort.getId() );
 							
 							ListCohortsActivity.this.startActivity(intent);
 							mode.finish();
@@ -144,8 +143,12 @@ public class ListCohortsActivity extends ActionBarActivity {
 					@Override
 					public boolean onPrepareActionMode(ActionMode mode,
 							Menu menu) {
-						// Here you can perform updates to the CAB due to
-						// an invalidate() request
+						/*
+						 * Here you can perform updates to the CAB due to
+						 * an invalidate() request
+						 * If user selects more than one row in all cohorts screen,
+						 * edit option will be hidden.
+						 */
 						if (checkedCount == 1){
 						       MenuItem item = menu.findItem(R.id.action_edit);
 						       item.setVisible(true);
@@ -165,9 +168,10 @@ public class ListCohortsActivity extends ActionBarActivity {
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.allcohortsmenu, menu);
 
-		// When user types i.e. query for the item in the search bar, how would
-		// the search bar behave
-
+		/*
+		 *  When user types i.e. query for the item in the search bar, how would
+		 *  the search bar behave
+		 */
 		SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String query) {
@@ -185,6 +189,7 @@ public class ListCohortsActivity extends ActionBarActivity {
 		MenuItem searchItem = menu.findItem(R.id.action_search);
 		SearchView searchView = (SearchView) MenuItemCompat
 				.getActionView(searchItem);
+		
 		cohortsListView.setTextFilterEnabled(false);
 		searchView.setIconifiedByDefault(true);
         searchView.setSubmitButtonEnabled(false);
@@ -194,7 +199,7 @@ public class ListCohortsActivity extends ActionBarActivity {
 		return true;
 	}
 
-	/*
+	/**
 	 * Select the new screen when any icon in action bar is selected.
 	 */
 	@Override
@@ -215,17 +220,23 @@ public class ListCohortsActivity extends ActionBarActivity {
 		return true;
 	}
 
+	/**
+	 * Create a list of cohorts from all the cohorts in cohorts dao.
+	 * Everytime user comes to all cohorts screen after add/delete/upgrade
+	 * this method is called and hence the list of cohorts is updated accordingly.
+	 * 
+	 */
 	public void createCohortsList() {
 		cohortsDAO = new CohortsDAO(getApplicationContext());
 		allCohorts = cohortsDAO.getAllCohorts();
 
 		cohortNames = new ArrayList<String>();
 
-		for (Cohorts cohort : allCohorts) {
+		for (Cohort cohort : allCohorts) {
 			cohortNames.add(cohort.getName());
 		}
 
-		// Ideally allcohorts should go in the adapter
+		// Ideally all cohorts should go in the adapter
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, cohortNames);
@@ -233,6 +244,10 @@ public class ListCohortsActivity extends ActionBarActivity {
 		adapter.notifyDataSetChanged();
 	}
 
+	/**
+	 * Delete selected(long press) items.
+	 * Using a loop as multiple items can be deleted at a time.
+	 */
 	private void deleteSelectedItems() {
 		
 		SparseBooleanArray checkedPositions = cohortsListView
@@ -240,7 +255,7 @@ public class ListCohortsActivity extends ActionBarActivity {
 
 		for (int i = 0; i < checkedPositions.size(); ++i) {
 			int position = checkedPositions.keyAt(i);
-			Cohorts cohort = allCohorts.get(position);
+			Cohort cohort = allCohorts.get(position);
 			cohortsDAO.deleteCohort(cohort);
 			allCohorts.remove(position);
 			cohortNames.remove(position);
@@ -261,7 +276,7 @@ public class ListCohortsActivity extends ActionBarActivity {
 
 			for (int i = 0; i < checkedPositions.size(); ++i) {
 				int position = checkedPositions.keyAt(i);
-				Cohorts cohort = allCohorts.get(position);
+				Cohort cohort = allCohorts.get(position);
 				cohortsDAO.deleteCohort(cohort);
 				allCohorts.remove(position);
 				cohortNames.remove(position);

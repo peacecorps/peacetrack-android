@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.peacetrack.backend.indicators;
 
 import java.io.FileOutputStream;
@@ -13,7 +10,6 @@ import java.util.List;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.peacetrack.models.indicators.Indicators;
@@ -21,6 +17,11 @@ import com.peacetrack.models.indicators.Indicators;
 /**
  * @author Pooja
  * 
+ *************************************************************** 
+ * Database Handler for indicators for creating empty database,
+ * getting list of posts and sectors from local database.
+ ***************************************************************
+ *
  */
 public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
@@ -75,7 +76,8 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 	 * time you open the application.
 	 * 
 	 * @return true if it exists, false if it doesn't
-	 */
+	 * 
+	 * /
 	private boolean checkDataBase() {
 		SQLiteDatabase checkDB = null;
 
@@ -97,7 +99,8 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 	/**
 	 * Copies your database from your local assets-folder to the just created
 	 * empty database in the system folder, from where it can be accessed and
-	 * handled. This is done by transfering bytestream.
+	 * handled. This is done by transferring byte stream.
+	 * 
 	 * */
 	private void copyDataBaseToSystem() throws IOException {
 		// Open your local db as an input stream
@@ -123,10 +126,11 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 
 	}
 
-	/*
+	/**
 	 * public void openDataBase() throws SQLException { // Open the database
 	 * sqLiteDatabase = SQLiteDatabase.openDatabase(databasePath, null,
 	 * SQLiteDatabase.OPEN_READONLY); }
+	 * 
 	 */
 
 	@Override
@@ -158,6 +162,10 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		}
 	}
 
+	/**
+	 * Get all posts(countries) from local database
+	 * @return
+	 */
 	public List<String> getAllPosts() {
 		openDB();
 		List<String> allPosts = null;
@@ -175,6 +183,10 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		return allPosts;
 	}
 
+	/**
+	 * Get all sectors from local database
+	 * @return
+	 */
 	public List<String> getAllSectors() {
 		openDB();
 		List<String> allSectors = null;
@@ -187,6 +199,14 @@ public class IndicatorsDBHandler extends SQLiteOpenHelper {
 		return allSectors;
 	}
 
+	/**
+	 * Get all sectors associated with a particular post.
+	 * This is done because when users select a particular post, then they don't need to see all the sectors.
+	 * If we put all sectors to choose from, we may end up getting a combination of post and sector that does not exist.
+	 * This assures the input of correct data from users.
+	 * @param post
+	 * @return
+	 */
 	public List<String> getAllSectorsForPost(String post) {
 		openDB();
 		List<String> allSectors = null;

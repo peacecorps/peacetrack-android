@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.peacetrack.views.welcome;
 
 import android.content.Intent;
@@ -20,6 +17,15 @@ import com.peacetrack.views.measurements.AddMeasurementActivity;
 /**
  * @author Pooja
  * 
+ *******************************************************************
+ * Main screen after one time login which user will be seeing often.
+ * Contains four buttons to navigate to different screens -
+ * -My Cohorts
+ * -My Impacts
+ * -Quickly add activity
+ * -Quickly add measurement
+ ********************************************************************
+ * 
  */
 public class WelcomeActivity extends ActionBarActivity implements
 		OnClickListener {
@@ -37,6 +43,14 @@ public class WelcomeActivity extends ActionBarActivity implements
 		super.onResume();
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
+		/*
+		 * Checks if user has entered his/her name in login screen which must have got saved in shared preferences.
+		 * Only checking name here because all the fields are mandatory on login screen
+		 * and thus it is not possible to save just one field without saving the others
+		 * and navigating to different screen
+		 * If shared preferences contains this information, dashboard will be the main screen.
+		 * User can not go back to login screen once he has submitted the details.
+		 */
 		if (!preferences.contains(getString(R.string.name))) {
 			Intent intent = new Intent(this, LoginActivity.class);
 			this.startActivity(intent);
@@ -45,6 +59,7 @@ public class WelcomeActivity extends ActionBarActivity implements
 
 		else {
 			getSupportActionBar().setDisplayShowHomeEnabled(false);
+			
 			Button cohortsbutton = (Button) findViewById(R.id.cohortsbutton);
 			Button impactButton = (Button) findViewById(R.id.impactbutton);
 			Button addactivityButton = (Button) findViewById(R.id.addactivitybutton);

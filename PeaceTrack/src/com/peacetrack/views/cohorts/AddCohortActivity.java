@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.peacetrack.views.cohorts;
 
 import java.util.ArrayList;
@@ -18,16 +15,23 @@ import android.widget.Toast;
 
 import com.peacetrack.R;
 import com.peacetrack.backend.cohorts.CohortsDAO;
-import com.peacetrack.models.cohorts.Cohorts;
+import com.peacetrack.models.cohorts.Cohort;
 
 /**
  * @author Pooja
  * 
+ ***************************************************
+ * Screen to add new cohort from all cohorts screen
+ * Take two parameters as input-
+ * - Cohort Title
+ * - Optional Description
+ ***************************************************
+ *
  */
 public class AddCohortActivity extends ActionBarActivity implements
 		OnItemSelectedListener {
 
-	protected Cohorts cohort;
+	private Cohort cohort;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +53,26 @@ public class AddCohortActivity extends ActionBarActivity implements
 
 			@Override
 			public void onClick(View v) {
-				cohort = new Cohorts();
+				cohort = new Cohort();
 				String name = nameEditText.getText().toString();
+				/*
+				 *  Check on cohort title so that it is not left blank and 
+				 *  if so user will get a pop up message asking him/her to enter a name. 
+				 */
+				
 				if (nameEditText.getText().length() == 0) {
 					Toast.makeText(AddCohortActivity.this,
 							getString(R.string.namecheck), Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
-
+				
+				/*
+				 * Cohort name is unique in a local database.
+				 * Check on the name of cohort entered so that user does not end up 
+				 * entering a cohort name that already exists in local database.
+				 * If so, user will get a message asking him/her to choose a different name.
+				 */
 				if (isExistingCohortName(name)) {
 					Toast.makeText(AddCohortActivity.this,
 							getString(R.string.duplicatecohortcheck),
@@ -68,6 +83,7 @@ public class AddCohortActivity extends ActionBarActivity implements
 				cohort.setDescription(descriptionEditText.getText().toString());
 
 				saveCohort();
+				
 				Intent intent = new Intent(AddCohortActivity.this,
 						ListCohortsActivity.class);
 				AddCohortActivity.this.startActivity(intent);
@@ -104,15 +120,24 @@ public class AddCohortActivity extends ActionBarActivity implements
 
 	}
 
+	/**
+	 * Calls addcohort method from cohorts dao to save a cohort into local database
+	 */
 	private void saveCohort() {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
 		cohortsDAO.addCohort(cohort);
 		finish();
 	}
 
+	/**
+	 * Checks if the given cohort name exists in the local database already.
+	 * Returns true or false accordingly.
+	 * @param name
+	 * @return
+	 */
 	private boolean isExistingCohortName(String name) {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
-		ArrayList<Cohorts> allCohorts = cohortsDAO.getAllCohorts();
+		ArrayList<Cohort> allCohorts = cohortsDAO.getAllCohorts();
 
 		for (int i = 0; i < allCohorts.size(); i++) {
 			if (allCohorts.get(i).getName().equalsIgnoreCase(name)) {
@@ -125,13 +150,9 @@ public class AddCohortActivity extends ActionBarActivity implements
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
-		// TODO Auto-generated method stub
-
 	}
 }

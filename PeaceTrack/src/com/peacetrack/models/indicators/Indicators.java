@@ -1,12 +1,12 @@
-/**
- * @author Pooja
- */
 package com.peacetrack.models.indicators;
 
-/*
- * ***************************************
+/**
+ * @author Pooja
+ * 
+ * ****************************************
  * Models the representation of indicators
- * ***************************************
+ * ****************************************
+ *
  */
 public class Indicators {
 

@@ -22,8 +22,12 @@ import com.peacetrack.backend.indicators.IndicatorsDBHandler;
 /**
  * @author Pooja
  * 
- *         First screen that volunteer sees, which takes his/her name, country
- *         and sector as an input.
+ ************************************************************
+ * First screen that volunteer sees, which takes his/her  
+ * name,country and sector as an input.
+ * This is one time screen and user can not go back to this screen
+ * once he has submitted his/her details.
+ ***********************************************************
  * 
  */
 public class LoginActivity extends ActionBarActivity implements
@@ -70,7 +74,10 @@ public class LoginActivity extends ActionBarActivity implements
 
 			@Override
 			public void onClick(View v) {
-
+				/*
+				 * Checking if user enters the some name for cohort and email is valid or not.
+				 * If not, user gets a message asking him/her to enter correct details.
+				 */
 				if (nameEditText.getText().length() == 0
 						&& (emailEditText.getText().length() == 0 || !isEmailValid(emailEditText
 								.getText()))) {
@@ -79,12 +86,20 @@ public class LoginActivity extends ActionBarActivity implements
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
+				/*
+				 * Checking if user enters the some name for cohort or not.
+				 * If not, user gets a prompt message asking him/her to enter.
+				 */
 				if (nameEditText.getText().length() == 0) {
 					Toast.makeText(LoginActivity.this,
 							getString(R.string.namecheck), Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
+				/*
+				 * Checking if email is not empty and valid.
+				 * If not, user gets a message asking to enter correct mail id.
+				 */
 				if (emailEditText.getText().length() == 0
 						|| !isEmailValid(emailEditText.getText())) {
 					Toast.makeText(LoginActivity.this,
@@ -122,6 +137,11 @@ public class LoginActivity extends ActionBarActivity implements
 
 	}
 
+	/**
+	 * Method to check if the email address entered is valid.
+	 * @param email
+	 * @return
+	 */
 	boolean isEmailValid(CharSequence email) {
 		return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
 	}
@@ -145,8 +165,6 @@ public class LoginActivity extends ActionBarActivity implements
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

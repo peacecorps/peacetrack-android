@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.peacetrack.views.cohorts;
 
 import java.util.ArrayList;
@@ -18,19 +15,25 @@ import android.widget.Toast;
 
 import com.peacetrack.R;
 import com.peacetrack.backend.cohorts.CohortsDAO;
-import com.peacetrack.models.cohorts.Cohorts;
+import com.peacetrack.models.cohorts.Cohort;
 
 /**
  * @author Pooja
  * 
+ *******************************************
+ * Screen to edit an existing cohort.
+ * Values will be pre filled in this screen
+ * and will be in edit mode.
+ *******************************************
+ *
  */
 public class EditCohortActivity extends ActionBarActivity implements
 		OnItemSelectedListener {
 
-	protected String cohortName;
-	protected String cohortDescription;
-	protected String cohortId;
-	protected Cohorts cohort;
+	private String cohortName;
+	private String cohortDescription;
+	private int cohortId;
+	private Cohort cohort;
 
 
 	@Override
@@ -53,8 +56,7 @@ public class EditCohortActivity extends ActionBarActivity implements
 		Intent intent = getIntent();
 		cohortName = intent.getStringExtra("name");
 		cohortDescription = intent.getStringExtra("description");
-		cohortId = intent.getStringExtra("id");
-
+		cohortId = intent.getIntExtra("id", 0);
 		nameEditText.setText(cohortName);
 		descriptionEditText.setText(cohortDescription);
 
@@ -62,7 +64,7 @@ public class EditCohortActivity extends ActionBarActivity implements
 
 			@Override
 			public void onClick(View v) {
-				cohort = new Cohorts();
+				cohort = new Cohort();
 				String newName = nameEditText.getText().toString();
 				String newDescription = descriptionEditText.getText().toString();
 				
@@ -82,7 +84,7 @@ public class EditCohortActivity extends ActionBarActivity implements
 				
 				cohort.setName(newName);
 				cohort.setDescription(newDescription);
-				cohort.setId(Integer.parseInt(cohortId));
+				cohort.setId(cohortId);
 
 				updateCohort();
 				Intent intent = new Intent(EditCohortActivity.this,
@@ -120,7 +122,7 @@ public class EditCohortActivity extends ActionBarActivity implements
 
 	private boolean isExistingCohortName(String name) {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
-		ArrayList<Cohorts> allCohorts = cohortsDAO.getAllCohorts();
+		ArrayList<Cohort> allCohorts = cohortsDAO.getAllCohorts();
 
 		for (int i = 0; i < allCohorts.size(); i++) {
 			if (allCohorts.get(i).getName().equalsIgnoreCase(name)) {
