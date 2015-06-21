@@ -1,0 +1,107 @@
+<!--  TODO Graph View , Still not complete-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/scrollView">
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/measurementname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="20dp"
+        android:text="@string/textview"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgrey" />
+    
+    <RelativeLayout
+        android:paddingLeft="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+
+        <TextView
+            android:id="@+id/measurementTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:textColor="@color/darkgrey"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <TextView
+            android:id="@+id/numEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="left"
+            android:paddingLeft="5dp"
+            android:textColor="@color/darkgrey"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/totalParticipants"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:textColor="@color/darkgrey"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activityGraphLinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="277dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp" />
+
+    <Button
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/addnewactivity"
+        android:textStyle="bold"
+        android:id="@+id/addnewactivitybutton"/>
+    <Button
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/addnewmeasurement"
+        android:textStyle="bold"
+        android:id="@+id/addnewmeasurementbutton"/>
+    </LinearLayout>
+</ScrollView>

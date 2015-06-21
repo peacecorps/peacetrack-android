@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- PeaceTrack Application -->
+    <string name="app_name">PeaceTrack</string>
+    <string name="action_settings">Settings</string>
+
+	<!-- Dialog box titles, messages and buttons -->
+	<string name="ok">OK</string>
+	<string name="yes">YES</string>
+	<string name="no">NO</string>
+	<string name="networkUnavailableTitle">No Internet Connection</string>
+	<string name="networkUnavailableMessage">Turn on mobile data or use WiFi to login to PeaceTrack.</string>
+	<string name="cohortListEmptyTitle">No Cohorts</string>
+	<string name="cohortListEmptyMessage">Cohort list is empty. Do you want to create a new cohort?</string>
+
+	<!-- Login Page elements -->
+	<string name="name">Name</string>
+    <string name="email">E-mail</string>
+    <string name="addacountbutton">Add Account</string>
+
+	<!-- Login Page error messages -->
+	<string name="namecheck">Please Enter Your Name</string>
+    <string name="duplicatecohortcheck">This Cohort Already Exists. Please use a different name.</string>
+    <string name="emailcheck">Please Enter Valid Email Address</string>
+    <string name="nameandemailcheck">Please Enter Your Name and Valid Email Address</string>
+
+	<!-- Dashboard elements -->
+    <string name="cohort">My Cohorts</string>
+    <string name="impact">My Impacts</string>
+    <string name="quickactivity">Quickly Add Activity</string>
+    <string name="quickmeasurement">Quickly Add  Measurement</string>
+    <string name="sector">Sector</string>
+    <string name="post">Post</string>
+    <string name="login">Login</string>
+    <string name="peaceTrack">PeaceTrack</string>
+
+	<!-- Activity elements -->
+	<string name="addactivityactivity_title_label">TITLE</string>
+	<string name="addactivityactivity_description_label">DESCRIPTION (optional)</string>
+	<string name="addactivityactivity_cohort_label">RELEVANT COHORT</string>
+	<string name="addactivityactivity_date_label">DATE</string>
+	<string name="addactivityactivity_time_label">TIME</string>
+	<string name="addactivityactivity_outputs_label">ASSOCIATED OUTPUTS</string>
+
+	<!-- Output Elements -->
+	<string name="projecttitle">Project Title</string>
+    <string name="outputname">Output Name</string>
+    <string name="outputdata">Output Data</string>
+    <string name="addanotheroutput">Add Another Output</string>
+
+	<!-- PeaceTrack Application -->
+    <string name="welcomeactivity_label">DashBoard</string>
+	<string name="allcohortsactivity_label">All Cohorts</string>
+	<string name="allactivitiesactivity_label">All Activities</string>
+	<string name="allmeasurementsactivity_label">All Measurements</string>
+	<string name="addcohortactivity_label">Add Cohort</string>
+	<string name="addactivityactivity_label">Add Activity</string>
+	<string name="addmeasurementactivity_label">Add Measurement</string>
+	<string name="cohortdetailsactivity_label">Cohort Profile</string>
+	<string name="measurementdetailsactivity_label">Measurement Profile</string>
+	<string name="addindicatorsactivity_label">Add Indicators</string>
+
+	<string name="search">Search</string>
+	<string name="edit">Edit</string>
+	<string name="delete">Delete</string>
+	<string name="addcohort">Add Cohort</string>
+	<string name="addactivity">Add Activity</string>
+	<string name="addmeasurement">Add Measurement</string>
+
+	<string name="participantshint">Number Of Members</string>
+	
+	<string name="cohortnamehint">Name</string>
+	<string name="cohortdescriptionhint">Optional Short Description</string>
+	<string name="agerangehint">Age Range</string>
+	<string name="maleshint">Number Of Males</string>
+	<string name="femaleshint">Number Of Females</string>
+	<string name="positioncommunityhint">Position Within Community</string>
+	<string name="cohortnoteshint">Other Relevant Notes</string>
+
+	<string name="activityDateHint">Pick a Date</string>
+	<string name="activityTimeHint">Pick a Time</string>
+	
+	<string name="measurementnamehint">Title</string>
+	<string name="measurementcohortnamehint">Relevant Cohort Name(s)</string>
+	<string name="associatedoutcomehint">Associated Outcome and outcome data</string>
+	<string name="measurementdescriptionhint">Optional Short Description</string>
+
+	<string name="save">Save</string>
+	
+	<string name="addnewactivity">Add a new activity</string>
+	
+	<string name="addnewmeasurement">Add a new measurement</string>
+</resources>

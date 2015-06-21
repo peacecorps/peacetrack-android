@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PeaceTrack.iml" filepath="$PROJECT_DIR$/.idea/PeaceTrack.iml" />
-      <module fileurl="file://$USER_HOME$/Software/android-sdk-linux/extras/android/support/v7/appcompat/appcompat.iml" filepath="$USER_HOME$/Software/android-sdk-linux/extras/android/support/v7/appcompat/appcompat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PeaceTrack.iml" filepath="$PROJECT_DIR$/PeaceTrack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
