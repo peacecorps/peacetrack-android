@@ -1,14 +1,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/scrollView">
+    android:id="@+id/scrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:orientation="vertical" >
-   
+
     <EditText
         android:id="@+id/activityname"
         android:layout_width="match_parent"
@@ -27,27 +27,27 @@
         android:textColorHint="#969696"
         android:textSize="17sp"
         android:textStyle="bold" />
-    
+
     <EditText
-	     android:id="@+id/activitydescription"
-	     android:layout_width="match_parent"
-	     android:layout_height="wrap_content"
-	     android:layout_marginBottom="0dp"
-	     android:layout_marginLeft="10dp"
-	     android:layout_marginRight="10dp"
-	     android:layout_marginTop="10dp"
-	     android:background="@drawable/rounded_edittext"
-	     android:hint="@string/activitydescriptionhint"
-	     android:inputType="textCapWords"
-	     android:paddingBottom="10dp"
-	     android:paddingLeft="15dp"
-	     android:paddingRight="10dp"
-	     android:paddingTop="10dp"
-	     android:textColor="@color/darkgrey"
-	     android:textColorHint="#969696"
-	     android:textSize="17sp"
-	     android:textStyle="bold" />
-    
+        android:id="@+id/activitydescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/activitydescriptionhint"
+        android:inputType="textCapWords"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/darkgrey"
+        android:textColorHint="#969696"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/relevantcohortname"
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
         android:textColorHint="#969696"
         android:textSize="17sp"
         android:textStyle="bold" />
-    
+
     <EditText
         android:id="@+id/activitydate"
         android:layout_width="match_parent"
@@ -87,7 +87,13 @@
         android:textColorHint="#969696"
         android:textSize="17sp"
         android:textStyle="bold" />
-    
+
+    <CalendarView
+        android:id="@+id/calendarView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.57" />
+
     <EditText
         android:id="@+id/activitytime"
         android:layout_width="match_parent"
@@ -110,7 +116,6 @@
 
     <EditText
         android:id="@+id/associatedoutputdata"
-        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -118,6 +123,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_edittext"
+        android:clickable="true"
         android:hint="@string/associatedoutputdatahint"
         android:inputType="none"
         android:paddingBottom="10dp"
@@ -129,21 +135,20 @@
         android:textSize="17sp"
         android:textStyle="bold" />
 
-
-	      <Button
-	          android:id="@+id/saveactivitybutton"
-	          android:layout_width="match_parent"
-	          android:layout_height="match_parent"
-	          android:layout_gravity="center|bottom"
-	          android:layout_marginBottom="10dp"
-	          android:layout_marginLeft="10dp"
-	          android:layout_marginRight="10dp"
-	          android:layout_marginTop="50dp"
-	          android:padding="10dp"
-	          android:text="@string/save"
-	          android:textColor="@android:color/white"
-	          android:textSize="22sp"
-	          android:textStyle="bold" />
-    
+    <Button
+        android:id="@+id/saveactivitybutton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"
+        android:text="@string/save"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 </LinearLayout>
+
 </ScrollView>
