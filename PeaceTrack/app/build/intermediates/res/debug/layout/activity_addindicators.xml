@@ -139,4 +139,4 @@
 	          android:textSize="22sp"
 	          android:textStyle="bold" />
     </LinearLayout>
-    </ScrollView><!-- From: file:/home/bhagya/StudioProjects/PeaceTrack/app/src/main/res/layout/activity_addindicators.xml -->
+    </ScrollView><!-- From: file:/home/bhagya/projects/peacetrack-android/PeaceTrack/app/src/main/res/layout/activity_addindicators.xml -->

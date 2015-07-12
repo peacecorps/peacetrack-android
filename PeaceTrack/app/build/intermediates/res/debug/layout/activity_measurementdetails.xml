@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="20dp"
-        android:text="@string/textview"
+        android:text="njnk"
         android:textSize="20sp"
         android:textStyle="bold" />
     <View
@@ -104,4 +104,4 @@
         android:textStyle="bold"
         android:id="@+id/addnewmeasurementbutton"/>
     </LinearLayout>
-</ScrollView><!-- From: file:/home/bhagya/StudioProjects/PeaceTrack/app/src/main/res/layout/activity_measurementdetails.xml -->
+</ScrollView><!-- From: file:/home/bhagya/projects/peacetrack-android/PeaceTrack/app/src/main/res/layout/activity_measurementdetails.xml -->

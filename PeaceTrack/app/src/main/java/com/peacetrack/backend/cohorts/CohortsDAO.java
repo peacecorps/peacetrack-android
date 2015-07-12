@@ -13,14 +13,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.peacetrack.backend.CommonDatabaseHelper;
 import com.peacetrack.models.cohorts.Cohorts;
 
-/*
- * @author Pooja
- *
- * ****************************************
- * DAO object to update/delete/add cohorts
- * ****************************************
- * 
- */
 public class CohortsDAO {
 
 	private CommonDatabaseHelper commonDatabaseHelper;
@@ -29,12 +21,6 @@ public class CohortsDAO {
 
 	private SQLiteDatabase writeDatabase;
 
-	/**
-	 * @param commonDatabaseHelper
-	 * @param readDatabase
-	 * @param writeDatabase
-	 * @param context
-	 */
 	public CohortsDAO(Context context) {
 		super();
 		this.commonDatabaseHelper = CommonDatabaseHelper.getInstance(context);
@@ -127,7 +113,7 @@ public class CohortsDAO {
 	 * Method to update/modify an existing cohort. This will use cohort ID in
 	 * where clause.
 	 */
-	public void updateProject(Cohorts cohort) {
+	public void updateCohort(Cohorts cohort) {
 		openDB();
 
 		ContentValues contentValues = new ContentValues(2);
