@@ -4,10 +4,10 @@ package com.peacetrack.models.login;
  * Created by bhagya on 6/28/15.
  */
 public class Sector {
-    int id;
-    String name;
-    String des;
-    String code;
+    private int id;
+    private String name;
+    private String des;
+    private String code;
 
     public int getId() {
         return id;

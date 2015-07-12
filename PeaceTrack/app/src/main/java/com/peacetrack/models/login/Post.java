@@ -4,10 +4,10 @@ package com.peacetrack.models.login;
  * Created by bhagya on 6/28/15.
  */
 public class Post {
-    int id;
-    String name;
-    int region;
-    int[] sectors;
+    private int id;
+    private String name;
+    private int region;
+    private int[] sectors;
 
     public int getId() {
         return id;
