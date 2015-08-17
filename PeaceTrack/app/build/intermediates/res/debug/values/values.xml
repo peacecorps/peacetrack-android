@@ -217,6 +217,11 @@
     <integer name="abc_max_action_buttons">2</integer>
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <!-- From: file:/home/bhagya/projects/peacetrack-android/PeaceTrack/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="Activitydetailsactivity_label">Activity Details</string>
+    <!-- From: file:/home/bhagya/projects/peacetrack-android/PeaceTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values/values.xml -->
+    <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -238,7 +243,16 @@
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="activityDateHint">Pick a Date</string>
+    <string name="activityDeleteMessage">Are you sure you want to delete this activity? This cannot be undone.</string>
+    <string name="activityDeleteTitle">Delete Activity</string>
+    <string name="activityOutputHint">Set Outputs</string>
     <string name="activityTimeHint">Pick a Time</string>
+    <string name="activityactivity_description_label">DESCRIPTION</string>
+    <string name="activitycheck">Please Enter Activity Title, Date and Time.</string>
+    <string name="activitydatecheck">Please Enter Date.</string>
+    <string name="activitynamecheck">Please Enter Activity Title.</string>
+    <string name="activitytimecheck">Please Enter Time.</string>
+    <string name="addActivityOutputTitle">Select Relevant Outputs:</string>
     <string name="addacountbutton">Add Account</string>
     <string name="addactivity">Add Activity</string>
     <string name="addactivityactivity_cohort_label">RELEVANT COHORT</string>
@@ -248,7 +262,6 @@
     <string name="addactivityactivity_outputs_label">ASSOCIATED OUTPUTS</string>
     <string name="addactivityactivity_time_label">TIME</string>
     <string name="addactivityactivity_title_label">TITLE</string>
-    <string name="addanotheroutput">Add Another Output</string>
     <string name="addcohort">Add Cohort</string>
     <string name="addcohortactivity_description_label">DESCRIPTION (optional)</string>
     <string name="addcohortactivity_label">Add Cohort</string>
@@ -258,12 +271,14 @@
     <string name="addmeasurementactivity_label">Add Measurement</string>
     <string name="addnewactivity">Add a new activity</string>
     <string name="addnewmeasurement">Add a new measurement</string>
+    <string name="addoutput">Add Output</string>
     <string name="agerangehint">Age Range</string>
     <string name="allactivitiesactivity_label">All Activities</string>
     <string name="allcohortsactivity_label">All Cohorts</string>
     <string name="allmeasurementsactivity_label">All Measurements</string>
     <string name="app_name">PeaceTrack</string>
-    <string name="associatedoutcomehint">Associated Outcome and outcome data</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
     <string name="cohort">My Cohorts</string>
     <string name="cohortDeleteMessage">Are you sure you want to delete this cohort? This cannot be undone.</string>
     <string name="cohortDeleteTitle">Delete Cohort</string>
@@ -271,32 +286,41 @@
     <string name="cohortListEmptyTitle">No Cohorts</string>
     <string name="cohortdetailsactivity_description_label">DESCRIPTION</string>
     <string name="cohortdetailsactivity_label">Cohort Profile</string>
-    <string name="cohortnamecheck">Please Enter Cohort Name</string>
+    <string name="cohortnamecheck">Please Enter Cohort Name.</string>
     <string name="cohortnoteshint">Other Relevant Notes</string>
     <string name="delete">Delete</string>
+    <string name="done">Done</string>
+    <string name="duplicateactivitycheck">This Activity Already Exists. Please use a different title.</string>
     <string name="duplicatecohortcheck">This Cohort Already Exists. Please use a different name.</string>
+    <string name="duplicatemeasurementcheck">This Measurement Already Exists. Please use a different title.</string>
     <string name="edit">Edit</string>
     <string name="email">E-mail</string>
-    <string name="emailcheck">Please Enter Valid Email Address</string>
+    <string name="emailcheck">Please Enter Valid Email Address.</string>
     <string name="femaleshint">Number Of Females</string>
     <string name="impact">My Impacts</string>
     <string name="login">Login</string>
     <string name="maleshint">Number Of Males</string>
-    <string name="measurementcohortnamehint">Relevant Cohort Name(s)</string>
-    <string name="measurementdescriptionhint">Optional Short Description</string>
+    <string name="measurementactivity_outcome_data_label">OUTCOME DATA</string>
+    <string name="measurementactivity_outcome_label">OUTCOME</string>
+    <string name="measurementcheck">Please Enter Measurement Title, Date and Outcome Data.</string>
     <string name="measurementdetailsactivity_label">Measurement Profile</string>
-    <string name="measurementnamehint">Title</string>
+    <string name="measurementoutcomecheck">Please Enter Outcome Data.</string>
+    <string name="measurementtitlecheck">Please Enter Measurement Title.</string>
     <string name="name">Name</string>
-    <string name="nameandemailcheck">Please Enter Your Name and Valid Email Address</string>
-    <string name="namecheck">Please Enter Your Name</string>
+    <string name="nameandemailcheck">Please Enter Your Name and Valid Email Address.</string>
+    <string name="namecheck">Please Enter Your Name.</string>
     <string name="networkUnavailableMessage">Turn on mobile data or use WiFi to login to PeaceTrack.</string>
     <string name="networkUnavailableTitle">No Internet Connection</string>
+    <string name="next">Next</string>
     <string name="no">NO</string>
     <string name="noDataMessage">There was an error fetching data from the server.</string>
     <string name="noDataTitle">Error in Fetching Data</string>
     <string name="ok">OK</string>
-    <string name="outputdata">Output Data</string>
-    <string name="outputname">Output Name</string>
+    <string name="outputcheck">Please Enter Output Name and Data.</string>
+    <string name="outputdata">OUTPUT DATA</string>
+    <string name="outputdatacheck">Please Enter Output Data.</string>
+    <string name="outputname">OUTPUT NAME</string>
+    <string name="outputnamecheck">Please Enter Output Name.</string>
     <string name="participantshint">Number Of Members</string>
     <string name="peaceTrack">PeaceTrack</string>
     <string name="positioncommunityhint">Position Within Community</string>

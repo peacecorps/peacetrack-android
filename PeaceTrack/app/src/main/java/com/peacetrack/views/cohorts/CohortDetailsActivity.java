@@ -14,13 +14,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peacetrack.R;
+import com.peacetrack.backend.activities.ActivityDAO;
 import com.peacetrack.backend.cohorts.CohortsDAO;
-import com.peacetrack.models.cohorts.Cohorts;
-import com.peacetrack.views.activities.AddActivityActivity;
-import com.peacetrack.views.measurements.AddMeasurementActivity;
+import com.peacetrack.backend.measurements.MeasurementDAO;
+import com.peacetrack.graphs.cohorts.OutcomeGraph;
+import com.peacetrack.models.activities.Activities;
+import com.peacetrack.models.cohorts.Cohort;
+import com.peacetrack.models.measurements.Measurement;
+import com.peacetrack.views.activities.AddActivityForCohortActivity;
+import com.peacetrack.views.measurements.AddMeasurementForCohortActivity;
+
+import org.achartengine.GraphicalView;
+
+import java.util.ArrayList;
 
 /**
  * Show the cohort details
@@ -28,14 +38,14 @@ import com.peacetrack.views.measurements.AddMeasurementActivity;
 public class CohortDetailsActivity extends ActionBarActivity implements
 		OnClickListener {
 
-	private Cohorts cohort;
+	private Cohort cohort;
 	private Button addNewActivityButton;
 	private Button addNewMeasurementButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_cohortdetails_new);
+		setContentView(R.layout.activity_cohortdetails);
 
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,9 +56,9 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 	}
 
 	private void initialize() {
-		int cohort_id = getIntent().getIntExtra("cohort_id", 0);
+		int cohortId = getIntent().getIntExtra("cohortId", 0);
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
-		cohort = cohortsDAO.getCohortWithID(cohort_id);
+		cohort = cohortsDAO.getCohortWithID(cohortId);
 
 		addNewActivityButton = (Button) findViewById(R.id.addnewactivitybutton);
 		addNewMeasurementButton = (Button) findViewById(R.id.addnewmeasurementbutton);
@@ -60,8 +70,8 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 	}
 
 	private void setViewElements() {
-		TextView name = (TextView) findViewById(R.id.cohortNameTextView);
-		TextView description = (TextView) findViewById(R.id.cohortDescriptionTextView);
+		TextView name = (TextView) findViewById(R.id.activityTitleTextView);
+		TextView description = (TextView) findViewById(R.id.activityDescriptionTextView);
 
 		name.setText(cohort.getName());
 		String des = cohort.getDescription();
@@ -71,6 +81,16 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 		else {
 			description.setText(des);
 		}
+
+		MeasurementDAO measurementDAO = new MeasurementDAO(getApplicationContext());
+
+		ArrayList<Measurement> measurements = measurementDAO.getAllMeasurementsForCohort(cohort.getId());
+
+		OutcomeGraph outcomeGraph = new OutcomeGraph();
+		GraphicalView graphicalView = outcomeGraph.getGraphicalView(this.getApplicationContext(), measurements);
+
+		LinearLayout layout = (LinearLayout) findViewById(R.id.outcomeGraph);
+		layout.addView(graphicalView);
 	}
 
 	@Override
@@ -107,7 +127,6 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 	}
 
 	private void showDeleteCohortDialog() {
-		// If network not available then show an error message
 		final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 				CohortDetailsActivity.this);
 		// set title
@@ -148,6 +167,22 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 	private void deleteCohort() {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
 		cohortsDAO.deleteCohort(cohort);
+		//Delete Activities related to the cohort
+		ActivityDAO activityDAO = new ActivityDAO(getApplicationContext());
+		ArrayList<Activities> activities = activityDAO.getAllActivities();
+		for(int i=0; i<activities.size(); i++) {
+			if(activities.get(i).getCohort() == cohort.getId()) {
+				activityDAO.deleteActivity(activities.get(i));
+			}
+		}
+		//Delete Measurements related to the cohort
+		MeasurementDAO measurementDAO = new MeasurementDAO(getApplicationContext());
+		ArrayList<Measurement> measurements = measurementDAO.getAllMeasurements();
+		for(int i=0; i<measurements.size(); i++) {
+			if(measurements.get(i).getCohort() == cohort.getId()) {
+				measurementDAO.deleteMeasurement(measurements.get(i));
+			}
+		}
 		finish();
 	}
 
@@ -155,10 +190,12 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 	public void onClick(View v) {
 		int id = v.getId();
 		if (id == R.id.addnewactivitybutton) {
-			Intent intent = new Intent(this, AddActivityActivity.class);
+			Intent intent = new Intent(this, AddActivityForCohortActivity.class);
+			intent.putExtra("cohortId", cohort.getId());
 			this.startActivity(intent);
 		} else if (id == R.id.addnewmeasurementbutton) {
-			Intent intent = new Intent(this, AddMeasurementActivity.class);
+			Intent intent = new Intent(this, AddMeasurementForCohortActivity.class);
+			intent.putExtra("cohortId", cohort.getId());
 			this.startActivity(intent);
 		}
 	}

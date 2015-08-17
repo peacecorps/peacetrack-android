@@ -60,7 +60,6 @@ public class LoginActivity extends ActionBarActivity implements
     private Spinner postSpinner;
     private Spinner sectorSpinner;
 
-    private IndicatorsDBHandler indicatorsDBHandler;
     private List<String> sectorList;
     private ArrayAdapter<String> sectorDataAdapter;
 
@@ -101,8 +100,6 @@ public class LoginActivity extends ActionBarActivity implements
         loginButton = (Button) findViewById(R.id.loginButton);
         nameEditText = (EditText) findViewById(R.id.nameEditText);
         emailEditText = (EditText) findViewById(R.id.nameEditEmail);
-
-        indicatorsDBHandler = new IndicatorsDBHandler(this);
 
         postSpinner = (Spinner) findViewById(R.id.post_spinner);
 
@@ -288,8 +285,12 @@ public class LoginActivity extends ActionBarActivity implements
                 if(sectorList != null) {
                     // If the post changes, update the associated sectors
                     String selectedPost = parent.getItemAtPosition(position).toString();
-                    List<String> newSectors = indicatorsDBHandler
-                            .getAllSectorsForPost(selectedPost);
+                    List<String> newSectors = null;
+                    for(int i=0; i<postArrayList.size(); i++) {
+                        if(selectedPost.equals(postArrayList.get(i).getName())) {
+                            newSectors = getSectors(postArrayList.get(i).getSectors());
+                        }
+                    }
                     sectorList.clear();
                     sectorList.addAll(newSectors);
                     sectorDataAdapter.notifyDataSetChanged();
@@ -392,7 +393,6 @@ public class LoginActivity extends ActionBarActivity implements
                 while ((inputStr = bufferedReader.readLine()) != null)
                     responseStrBuilder.append(inputStr);
                 json = new JSONObject(responseStrBuilder.toString());
-                Log.i("test", responseStrBuilder.toString());
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -446,7 +446,6 @@ public class LoginActivity extends ActionBarActivity implements
                 while ((inputStr = bufferedReader.readLine()) != null)
                     responseStrBuilder.append(inputStr);
                 json = new JSONObject(responseStrBuilder.toString());
-                Log.i("test", responseStrBuilder.toString());
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {

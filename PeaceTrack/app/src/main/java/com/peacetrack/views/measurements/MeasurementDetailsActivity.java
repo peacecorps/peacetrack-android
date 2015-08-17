@@ -9,32 +9,49 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.peacetrack.R;
+import com.peacetrack.backend.measurements.MeasurementDAO;
+import com.peacetrack.models.measurements.Measurement;
 import com.peacetrack.views.activities.AddActivityActivity;
 
-/**
- * @author Pooja
- * 
- */
 public class MeasurementDetailsActivity extends ActionBarActivity implements
 		OnClickListener {
+
+	private Measurement measurement;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_measurementdetails);
 
+		getSupportActionBar().setDisplayShowHomeEnabled(false);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		initialize();
+		setViewElements();
 	}
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		getSupportActionBar().setDisplayShowHomeEnabled(false);
-		Button addnewactivitybutton = (Button) findViewById(R.id.addnewactivitybutton);
-		Button addnewmeasurementbutton = (Button) findViewById(R.id.addnewmeasurementbutton);
+	private void initialize() {
+		int measurementId = getIntent().getIntExtra("measurementId", 0);
+		MeasurementDAO measurementDAO = new MeasurementDAO(getApplicationContext());
+		measurement = measurementDAO.getMeasurementWithID(measurementId);
+	}
 
+	private void setViewElements() {
+		//TODO
+		TextView title = (TextView) findViewById(R.id.activityTitleTextView);
+		TextView description = (TextView) findViewById(R.id.activityDescriptionTextView);
+
+		title.setText(measurement.getTitle());
+		String des = measurement.getDescription();
+		if(des.equals("")) {
+			description.setText("None");
+		}
+		else {
+			description.setText(des);
+		}
 	}
 
 	@Override

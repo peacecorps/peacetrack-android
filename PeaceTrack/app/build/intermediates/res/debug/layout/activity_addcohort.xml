@@ -26,7 +26,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/cohortName"
+        android:id="@+id/activityTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -58,7 +58,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/cohortDescription"
+        android:id="@+id/activityDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.peacetrack.R;
 import com.peacetrack.backend.cohorts.CohortsDAO;
-import com.peacetrack.models.cohorts.Cohorts;
+import com.peacetrack.models.cohorts.Cohort;
 
 public class AddCohortActivity extends ActionBarActivity {
 
@@ -27,7 +27,7 @@ public class AddCohortActivity extends ActionBarActivity {
 	private EditText nameEditText;
 	private EditText descriptionEditText;
 
-	private Cohorts cohort;
+	private Cohort cohort;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,8 @@ public class AddCohortActivity extends ActionBarActivity {
 			oldName = cohort.getName();
 		}
 		addCohortButton = (Button) findViewById(R.id.savecohortbutton);
-		nameEditText = (EditText) findViewById(R.id.cohortName);
-		descriptionEditText = (EditText) findViewById(R.id.cohortDescription);
+		nameEditText = (EditText) findViewById(R.id.activityTitle);
+		descriptionEditText = (EditText) findViewById(R.id.activityDescription);
 	}
 
 	private void setEditableElements() {
@@ -68,9 +68,9 @@ public class AddCohortActivity extends ActionBarActivity {
 
 				@Override
 				public void onClick(View v) {
-					cohort = new Cohorts();
+					cohort = new Cohort();
 					String name = nameEditText.getText().toString();
-					if (nameEditText.getText().length() == 0) {
+					if (name.length() == 0) {
 						Toast.makeText(AddCohortActivity.this,
 								getString(R.string.cohortnamecheck), Toast.LENGTH_SHORT)
 								.show();
@@ -101,7 +101,7 @@ public class AddCohortActivity extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					String name = nameEditText.getText().toString();
-					if (nameEditText.getText().length() == 0) {
+					if (name.length() == 0) {
 						Toast.makeText(AddCohortActivity.this,
 								getString(R.string.cohortnamecheck), Toast.LENGTH_SHORT)
 								.show();
@@ -157,7 +157,7 @@ public class AddCohortActivity extends ActionBarActivity {
 
 	private boolean checkExistingCohort(String name) {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
-		ArrayList<Cohorts> allCohorts = cohortsDAO.getAllCohorts();
+		ArrayList<Cohort> allCohorts = cohortsDAO.getAllCohorts();
 
 		for (int i = 0; i < allCohorts.size(); i++) {
 			if (allCohorts.get(i).getName().equalsIgnoreCase(name)) {

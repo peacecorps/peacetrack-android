@@ -1,16 +1,15 @@
 package com.peacetrack.models.cohorts;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /*
- * @author Pooja
- * 
  * *************************************
- * Models the representation Of Cohorts
+ * Models the representation Of Cohort
  * **************************************
  */
 
-public class Cohorts {
+public class Cohort {
 
 	// Instance Properties
 	private int id; // Used to modify existing cohort
@@ -38,6 +37,8 @@ public class Cohorts {
 	// Used to create the table
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(DATABASE_CREATE);
+		Log.i("HEHE", "came");
+
 	}
 
 	// Used to upgrade the table
@@ -47,7 +48,7 @@ public class Cohorts {
 		onCreate(database);
 	}
 
-	public Cohorts() {
+	public Cohort() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
