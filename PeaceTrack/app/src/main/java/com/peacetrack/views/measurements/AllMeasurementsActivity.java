@@ -5,7 +5,11 @@ package com.peacetrack.views.measurements;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,13 +21,14 @@ import com.peacetrack.backend.cohorts.CohortsDAO;
 import com.peacetrack.backend.measurements.MeasurementDAO;
 import com.peacetrack.models.cohorts.Cohort;
 import com.peacetrack.models.measurements.Measurement;
+import com.peacetrack.views.cohorts.AddCohortActivity;
 import com.peacetrack.views.cohorts.CohortDetailsActivity;
 import com.peacetrack.views.cohorts.ListCohortsActivity;
 import com.peacetrack.views.welcome.WelcomeActivity;
 
 import java.util.ArrayList;
 
-public class AllMeasurementsActivity extends ActionBarActivity {
+public class AllMeasurementsActivity extends ActionBarActivity implements SearchView.OnQueryTextListener {
 
 	private ListView measurementsListView;
 	private ArrayList<Measurement> allMeasurements;
@@ -39,7 +44,7 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		initialize();
-		bindListItemClickListener();
+		//bindListItemClickListener();
 	}
 
 	private void initialize() {
@@ -72,12 +77,26 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 						break;
 					}
 				}
-
 				Intent intent = new Intent(AllMeasurementsActivity.this, MeasurementDetailsActivity.class);
 				intent.putExtra("measurementId", measurementId);
 				startActivity(intent);
 			}
 		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater menuInflater = getMenuInflater();
+		menuInflater.inflate(R.menu.allmeasurementsmenu, menu);
+
+		MenuItem searchItem = menu.findItem(R.id.action_search);
+		SearchView searchView = (SearchView) MenuItemCompat
+				.getActionView(searchItem);
+		searchView.setOnQueryTextListener(this);
+
+		getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+		return true;
 	}
 
 	/*
@@ -98,6 +117,17 @@ public class AllMeasurementsActivity extends ActionBarActivity {
 		} else {
 			return super.onOptionsItemSelected(item);
 		}
+		return true;
+	}
+
+	@Override
+	public boolean onQueryTextSubmit(String query) {
+		return false;
+	}
+
+	@Override
+	public boolean onQueryTextChange(String newText) {
+		adapter.getFilter().filter(newText);
 		return true;
 	}
 }

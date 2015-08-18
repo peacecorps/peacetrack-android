@@ -18,7 +18,7 @@ import com.peacetrack.R;
 import com.peacetrack.backend.cohorts.CohortsDAO;
 import com.peacetrack.models.cohorts.Cohort;
 
-public class AddCohortActivity extends ActionBarActivity {
+public class AddCohortActivity extends ActionBarActivity implements View.OnClickListener {
 
 	private boolean isEdit;
 	private String oldName;
@@ -26,6 +26,13 @@ public class AddCohortActivity extends ActionBarActivity {
 	private Button addCohortButton;
 	private EditText nameEditText;
 	private EditText descriptionEditText;
+	private EditText noOfMembersEditText;
+	private EditText noOfMalesEditText;
+	private EditText noOfFemalesEditText;
+	private EditText ageRangeLowerEditText;
+	private EditText ageRangeHigherEditText;
+	private EditText positionEditText;
+	private EditText otherNotesEditText;
 
 	private Cohort cohort;
 
@@ -41,7 +48,7 @@ public class AddCohortActivity extends ActionBarActivity {
 		if(isEdit) {
 			setEditableElements();
 		}
-		bindAddButtonListener();
+		addCohortButton.setOnClickListener(this);
 	}
 
 	private void initialize() {
@@ -52,80 +59,73 @@ public class AddCohortActivity extends ActionBarActivity {
 			cohort = cohortsDAO.getCohortWithID(cohortId);
 			oldName = cohort.getName();
 		}
+		else {
+			cohort = new Cohort();
+		}
 		addCohortButton = (Button) findViewById(R.id.savecohortbutton);
-		nameEditText = (EditText) findViewById(R.id.activityTitle);
-		descriptionEditText = (EditText) findViewById(R.id.activityDescription);
+		nameEditText = (EditText) findViewById(R.id.cohortName);
+		descriptionEditText = (EditText) findViewById(R.id.cohortDescription);
+		noOfMembersEditText = (EditText) findViewById(R.id.cohortNoOfMembers);
+		noOfMalesEditText = (EditText) findViewById(R.id.cohortMales);
+		noOfFemalesEditText = (EditText) findViewById(R.id.cohortFemales);
+		ageRangeLowerEditText = (EditText) findViewById(R.id.cohortAgeRangeLower);
+		ageRangeHigherEditText = (EditText) findViewById(R.id.cohortAgeRangeHigher);
+		positionEditText = (EditText) findViewById(R.id.cohortPosition);
+		otherNotesEditText = (EditText) findViewById(R.id.cohortOtherNotes);
 	}
 
 	private void setEditableElements() {
 		nameEditText.setText(cohort.getName());
 		descriptionEditText.setText(cohort.getDescription());
+		noOfMembersEditText.setText(cohort.getNoOfMembers());
+		noOfMalesEditText.setText(cohort.getNoOfMales());
+		noOfFemalesEditText.setText(cohort.getNoOfFemales());
+		positionEditText.setText(cohort.getPosition());
+		otherNotesEditText.setText(cohort.getOtherNotes());
+
+		String[] ageRange = cohort.getAgeRange().split("-");
+		ageRangeLowerEditText.setText(ageRange[0]);
+		ageRangeHigherEditText.setText(ageRange[1]);
 	}
 
-	private void bindAddButtonListener() {
-		if(!isEdit) {
-			addCohortButton.setOnClickListener(new View.OnClickListener() {
+	private void saveCohort() {
+		String name = nameEditText.getText().toString();
+		String noOfMembers = noOfMembersEditText.getText().toString();
+		String noOfMales = noOfMalesEditText.getText().toString();
+		String noOfFemales = noOfFemalesEditText.getText().toString();
+		String ageLower = ageRangeLowerEditText.getText().toString();
+		String ageHigher = ageRangeHigherEditText.getText().toString();
+		String position = positionEditText.getText().toString();
 
-				@Override
-				public void onClick(View v) {
-					cohort = new Cohort();
-					String name = nameEditText.getText().toString();
-					if (name.length() == 0) {
-						Toast.makeText(AddCohortActivity.this,
-								getString(R.string.cohortnamecheck), Toast.LENGTH_SHORT)
-								.show();
-						return;
-					}
-
-					if (checkExistingCohort(name)) {
-						Toast.makeText(AddCohortActivity.this,
-								getString(R.string.duplicatecohortcheck),
-								Toast.LENGTH_SHORT).show();
-						return;
-					}
-
-					cohort.setName(name);
-					cohort.setDescription(descriptionEditText.getText().toString());
-
-					saveCohort();
-
-					Intent intent = new Intent(AddCohortActivity.this,
-							ListCohortsActivity.class);
-					AddCohortActivity.this.startActivity(intent);
-				}
-			});
+		if(isEdit && !name.equals(oldName) && checkExistingCohort(name)) {
+			Toast.makeText(AddCohortActivity.this,
+					getString(R.string.duplicatecohortcheck),
+					Toast.LENGTH_SHORT).show();
+			return;
 		}
-		else {
-			addCohortButton.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					String name = nameEditText.getText().toString();
-					if (name.length() == 0) {
-						Toast.makeText(AddCohortActivity.this,
-								getString(R.string.cohortnamecheck), Toast.LENGTH_SHORT)
-								.show();
-						return;
-					}
-
-					if (!name.equals(oldName) && checkExistingCohort(name)) {
-						Toast.makeText(AddCohortActivity.this,
-								getString(R.string.duplicatecohortcheck),
-								Toast.LENGTH_SHORT).show();
-						return;
-					}
-
-					cohort.setName(name);
-					cohort.setDescription(descriptionEditText.getText().toString());
-
-					saveCohort();
-
-					Intent intent = new Intent(AddCohortActivity.this,
-							ListCohortsActivity.class);
-					AddCohortActivity.this.startActivity(intent);
-				}
-			});
+		if(!isEdit && checkExistingCohort(name)) {
+			Toast.makeText(AddCohortActivity.this,
+					getString(R.string.duplicatecohortcheck),
+					Toast.LENGTH_SHORT).show();
+			return;
 		}
+		if(name.length() == 0 || noOfMembers.length() == 0 || noOfMales.length() == 0 || noOfFemales.length() == 0 || ageLower.length() == 0 || ageHigher.length() == 0 || position.length() == 0) {
+			Toast.makeText(AddCohortActivity.this,
+					getString(R.string.cohortcheck),
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
+
+		cohort.setName(name);
+		cohort.setDescription(descriptionEditText.getText().toString());
+		cohort.setNoOfMembers(Integer.parseInt(noOfMembers));
+		cohort.setNoOfMales(Integer.parseInt(noOfMales));
+		cohort.setNoOfFemales(Integer.parseInt(noOfFemales));
+		cohort.setAgeRange(ageLower + "-" + ageHigher);
+		cohort.setPosition(position);
+		cohort.setOtherNotes(otherNotesEditText.getText().toString());
+
+		saveCohortInDatabase();
 	}
 
 	/*
@@ -146,7 +146,7 @@ public class AddCohortActivity extends ActionBarActivity {
 
 	}
 
-	private void saveCohort() {
+	private void saveCohortInDatabase() {
 		CohortsDAO cohortsDAO = new CohortsDAO(getApplicationContext());
 		if(!isEdit)
 			cohortsDAO.addCohort(cohort);
@@ -165,5 +165,16 @@ public class AddCohortActivity extends ActionBarActivity {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
+		if(id == R.id.savecohortbutton) {
+			saveCohort();
+			Intent intent = new Intent(AddCohortActivity.this,
+					ListCohortsActivity.class);
+			AddCohortActivity.this.startActivity(intent);
+		}
 	}
 }

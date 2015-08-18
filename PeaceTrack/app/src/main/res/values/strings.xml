@@ -35,6 +35,7 @@
 
 	<!-- Add Cohort Page error messages -->
 	<string name="cohortnamecheck">Please Enter Cohort Name.</string>
+	<string name="cohortcheck">Please Enter Cohort Details.</string>
 	<string name="duplicatecohortcheck">This Cohort Already Exists. Please use a different name.</string>
 
 	<!-- Add Activity Page error messages -->
@@ -62,9 +63,17 @@
 	<!-- Cohort elements -->
 	<string name="addcohortactivity_name_label">NAME</string>
 	<string name="addcohortactivity_description_label">DESCRIPTION (optional)</string>
+	<string name="addcohortactivity_members_label">NO OF MEMBERS</string>
+	<string name="addcohortactivity_males_label">MALES</string>
+	<string name="addcohortactivity_females_label">FEMALES</string>
+	<string name="addcohortactivity_agerange_label">AGE RANGE</string>
+	<string name="addcohortactivity_position_label">POSITION</string>
+	<string name="addcohortactivity_other_label">OTHER NOTES (optional)</string>
 	<string name="searchInputCohort">Search Cohort..</string>
 
 	<string name="cohortdetailsactivity_description_label">DESCRIPTION</string>
+	<string name="cohortdetailsactivity_member_label">MEMBERS</string>
+	<string name="cohortdetailsactivity_other_label">OTHER NOTES</string>
 
 	<!-- Activities elements -->
 	<string name="addactivityactivity_title_label">TITLE</string>

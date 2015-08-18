@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.peacetrack.R;
@@ -41,8 +40,8 @@ public class MeasurementDetailsActivity extends ActionBarActivity implements
 
 	private void setViewElements() {
 		//TODO
-		TextView title = (TextView) findViewById(R.id.activityTitleTextView);
-		TextView description = (TextView) findViewById(R.id.activityDescriptionTextView);
+		TextView title = (TextView) findViewById(R.id.cohortNameTextView);
+		TextView description = (TextView) findViewById(R.id.cohortDescriptionTextView);
 
 		title.setText(measurement.getTitle());
 		String des = measurement.getDescription();

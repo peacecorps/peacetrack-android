@@ -11,7 +11,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -128,8 +127,8 @@ public class AddActivityActivity extends ActionBarActivity implements
         cohortList = cohortsDBHandler.getAllCohorts();
 
         if (cohortList.size() > 0) {
-            nameEditText = (EditText) findViewById(R.id.activityTitle);
-            descriptionEditText = (EditText) findViewById(R.id.activityDescription);
+            nameEditText = (EditText) findViewById(R.id.cohortName);
+            descriptionEditText = (EditText) findViewById(R.id.cohortDescription);
 
             createCohortList();
 

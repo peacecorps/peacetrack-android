@@ -26,7 +26,6 @@ public class CohortsDAO {
 		this.commonDatabaseHelper = CommonDatabaseHelper.getInstance(context);
 		this.readDatabase = commonDatabaseHelper.getReadableDatabase();
 		this.writeDatabase = commonDatabaseHelper.getWritableDatabase();
-
 	}
 
 	private void openDB() {
@@ -54,10 +53,16 @@ public class CohortsDAO {
 		openDB();
 
 		ArrayList<Cohort> allCohorts = null;
-		String[] columns = new String[3];
+		String[] columns = new String[9];
 		columns[0] = Cohort.COLUMN_ID;
 		columns[1] = Cohort.COLUMN_NAME;
 		columns[2] = Cohort.COLUMN_DESCRIPTION;
+		columns[3] = Cohort.COLUMN_MEMBERS;
+		columns[4] = Cohort.COLUMN_AGERANGE;
+		columns[5] = Cohort.COLUMN_MALES;
+		columns[6] = Cohort.COLUMN_FEMALES;
+		columns[7] = Cohort.COLUMN_POSITION;
+		columns[8] = Cohort.COLUMN_OTHERNOTES;
 
 		Cursor returnData = readDatabase.query(Cohort.COHORTS_TABLE, columns,
 				null, null, null, null, null);
@@ -75,10 +80,17 @@ public class CohortsDAO {
 		openDB();
 
 		Cohort cohort = new Cohort();
-		String[] columns = new String[3];
+		String[] columns = new String[9];
 		columns[0] = Cohort.COLUMN_ID;
 		columns[1] = Cohort.COLUMN_NAME;
 		columns[2] = Cohort.COLUMN_DESCRIPTION;
+		columns[3] = Cohort.COLUMN_MEMBERS;
+		columns[4] = Cohort.COLUMN_AGERANGE;
+		columns[5] = Cohort.COLUMN_MALES;
+		columns[6] = Cohort.COLUMN_FEMALES;
+		columns[7] = Cohort.COLUMN_POSITION;
+		columns[8] = Cohort.COLUMN_OTHERNOTES;
+
 		String where = Cohort.COLUMN_ID + "=" + id;
 
 		Cursor returnData = readDatabase.query(Cohort.COHORTS_TABLE, columns,
@@ -88,6 +100,12 @@ public class CohortsDAO {
 		cohort.setId(Integer.parseInt(returnData.getString(0)));
 		cohort.setName(returnData.getString(1));
 		cohort.setDescription(returnData.getString(2));
+		cohort.setNoOfMembers(returnData.getInt(3));
+		cohort.setAgeRange(returnData.getString(4));
+		cohort.setNoOfMales(returnData.getInt(5));
+		cohort.setNoOfFemales(returnData.getInt(6));
+		cohort.setPosition(returnData.getString(7));
+		cohort.setOtherNotes(returnData.getString(8));
 
 		closeDB();
 
@@ -100,10 +118,16 @@ public class CohortsDAO {
 	public void addCohort(Cohort cohort) {
 		openDB();
 
-		ContentValues contentValues = new ContentValues(2);
+		ContentValues contentValues = new ContentValues(8);
 		contentValues.put(Cohort.COLUMN_NAME, cohort.getName());
 		contentValues.put(Cohort.COLUMN_DESCRIPTION, cohort.getDescription());
-		// TODO:check that this cohort does not exist already
+		contentValues.put(Cohort.COLUMN_MEMBERS, cohort.getNoOfMembers());
+		contentValues.put(Cohort.COLUMN_AGERANGE, cohort.getAgeRange());
+		contentValues.put(Cohort.COLUMN_MALES, cohort.getNoOfMales());
+		contentValues.put(Cohort.COLUMN_FEMALES, cohort.getNoOfFemales());
+		contentValues.put(Cohort.COLUMN_POSITION, cohort.getPosition());
+		contentValues.put(Cohort.COLUMN_OTHERNOTES, cohort.getOtherNotes());
+
 		writeDatabase.insert(Cohort.COHORTS_TABLE, null, contentValues);
 
 		closeDB();
@@ -116,9 +140,15 @@ public class CohortsDAO {
 	public void updateCohort(Cohort cohort) {
 		openDB();
 
-		ContentValues contentValues = new ContentValues(2);
+		ContentValues contentValues = new ContentValues(8);
 		contentValues.put(Cohort.COLUMN_NAME, cohort.getName());
 		contentValues.put(Cohort.COLUMN_DESCRIPTION, cohort.getDescription());
+		contentValues.put(Cohort.COLUMN_MEMBERS, cohort.getNoOfMembers());
+		contentValues.put(Cohort.COLUMN_AGERANGE, cohort.getAgeRange());
+		contentValues.put(Cohort.COLUMN_MALES, cohort.getNoOfMales());
+		contentValues.put(Cohort.COLUMN_FEMALES, cohort.getNoOfFemales());
+		contentValues.put(Cohort.COLUMN_POSITION, cohort.getPosition());
+		contentValues.put(Cohort.COLUMN_OTHERNOTES, cohort.getOtherNotes());
 
 		String where = Cohort.COLUMN_ID + "=" + cohort.getId();
 		writeDatabase.update(Cohort.COHORTS_TABLE, contentValues, where, null);
@@ -154,6 +184,13 @@ public class CohortsDAO {
 			cohort.setId(Integer.parseInt(returnData.getString(0)));
 			cohort.setName(returnData.getString(1));
 			cohort.setDescription(returnData.getString(2));
+			cohort.setNoOfMembers(returnData.getInt(3));
+			cohort.setAgeRange(returnData.getString(4));
+			cohort.setNoOfMales(returnData.getInt(5));
+			cohort.setNoOfFemales(returnData.getInt(6));
+			cohort.setPosition(returnData.getString(7));
+			cohort.setOtherNotes(returnData.getString(8));
+
 			output.add(count, cohort);
 			// Advance the Cursor
 			returnData.moveToNext();

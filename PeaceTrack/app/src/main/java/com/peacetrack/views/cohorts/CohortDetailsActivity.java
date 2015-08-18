@@ -14,21 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peacetrack.R;
 import com.peacetrack.backend.activities.ActivityDAO;
 import com.peacetrack.backend.cohorts.CohortsDAO;
 import com.peacetrack.backend.measurements.MeasurementDAO;
-import com.peacetrack.graphs.cohorts.OutcomeGraph;
 import com.peacetrack.models.activities.Activities;
 import com.peacetrack.models.cohorts.Cohort;
 import com.peacetrack.models.measurements.Measurement;
 import com.peacetrack.views.activities.AddActivityForCohortActivity;
 import com.peacetrack.views.measurements.AddMeasurementForCohortActivity;
-
-import org.achartengine.GraphicalView;
 
 import java.util.ArrayList;
 
@@ -70,10 +66,17 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 	}
 
 	private void setViewElements() {
-		TextView name = (TextView) findViewById(R.id.activityTitleTextView);
-		TextView description = (TextView) findViewById(R.id.activityDescriptionTextView);
+		TextView name = (TextView) findViewById(R.id.cohortNameTextView);
+		TextView description = (TextView) findViewById(R.id.cohortDescriptionTextView);
+		TextView members = (TextView) findViewById(R.id.cohortNoOfMembers);
+		TextView males = (TextView) findViewById(R.id.cohortNoOfMales);
+		TextView females = (TextView) findViewById(R.id.cohortNoOfFemales);
+		TextView ageRange = (TextView) findViewById(R.id.cohortAgeRange);
+		TextView position = (TextView) findViewById(R.id.cohortPosition);
+		TextView otherNotes = (TextView) findViewById(R.id.cohortOtherNotes);
 
 		name.setText(cohort.getName());
+
 		String des = cohort.getDescription();
 		if(des.equals("")) {
 			description.setText("None");
@@ -82,15 +85,19 @@ public class CohortDetailsActivity extends ActionBarActivity implements
 			description.setText(des);
 		}
 
-		MeasurementDAO measurementDAO = new MeasurementDAO(getApplicationContext());
+		members.setText(Integer.toString(cohort.getNoOfMembers()));
+		males.setText(Integer.toString(cohort.getNoOfMales()));
+		females.setText(Integer.toString(cohort.getNoOfFemales()));
+		ageRange.setText(cohort.getAgeRange());
+		position.setText(cohort.getPosition());
 
-		ArrayList<Measurement> measurements = measurementDAO.getAllMeasurementsForCohort(cohort.getId());
-
-		OutcomeGraph outcomeGraph = new OutcomeGraph();
-		GraphicalView graphicalView = outcomeGraph.getGraphicalView(this.getApplicationContext(), measurements);
-
-		LinearLayout layout = (LinearLayout) findViewById(R.id.outcomeGraph);
-		layout.addView(graphicalView);
+		String other = cohort.getOtherNotes();
+		if(other.equals("")) {
+			otherNotes.setText("None");
+		}
+		else {
+			otherNotes.setText(other);
+		}
 	}
 
 	@Override

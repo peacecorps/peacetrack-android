@@ -55,8 +55,8 @@ public class ActivityDetailsActivity extends ActionBarActivity implements
 	}
 
 	private void setViewElements() {
-		TextView name = (TextView) findViewById(R.id.activityTitleTextView);
-		TextView description = (TextView) findViewById(R.id.activityDescriptionTextView);
+		TextView name = (TextView) findViewById(R.id.cohortNameTextView);
+		TextView description = (TextView) findViewById(R.id.cohortDescriptionTextView);
 		TextView cohort = (TextView) findViewById(R.id.activityCohortTextView);
 		TextView date = (TextView) findViewById(R.id.activityDateTextView);
 		TextView time = (TextView) findViewById(R.id.activityTimeTextView);

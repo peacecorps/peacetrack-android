@@ -3,30 +3,23 @@
  */
 package com.peacetrack.views.activities;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.peacetrack.R;
 import com.peacetrack.backend.activities.ActivityDAO;
-import com.peacetrack.backend.cohorts.CohortsDAO;
 import com.peacetrack.models.activities.Activities;
-import com.peacetrack.models.cohorts.Cohort;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -125,8 +118,8 @@ public class AddActivityForCohortActivity extends ActionBarActivity implements
             activity = new Activities();
         }
 
-        nameEditText = (EditText) findViewById(R.id.activityTitle);
-        descriptionEditText = (EditText) findViewById(R.id.activityDescription);
+        nameEditText = (EditText) findViewById(R.id.cohortName);
+        descriptionEditText = (EditText) findViewById(R.id.cohortDescription);
 
         final Calendar calendar = Calendar.getInstance();
 

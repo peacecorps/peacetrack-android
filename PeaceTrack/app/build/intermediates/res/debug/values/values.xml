@@ -263,9 +263,15 @@
     <string name="addactivityactivity_time_label">TIME</string>
     <string name="addactivityactivity_title_label">TITLE</string>
     <string name="addcohort">Add Cohort</string>
+    <string name="addcohortactivity_agerange_label">AGE RANGE</string>
     <string name="addcohortactivity_description_label">DESCRIPTION (optional)</string>
+    <string name="addcohortactivity_females_label">FEMALES</string>
     <string name="addcohortactivity_label">Add Cohort</string>
+    <string name="addcohortactivity_males_label">MALES</string>
+    <string name="addcohortactivity_members_label">NO OF MEMBERS</string>
     <string name="addcohortactivity_name_label">NAME</string>
+    <string name="addcohortactivity_other_label">OTHER NOTES (optional)</string>
+    <string name="addcohortactivity_position_label">POSITION</string>
     <string name="addindicatorsactivity_label">Add Indicators</string>
     <string name="addmeasurement">Add Measurement</string>
     <string name="addmeasurementactivity_label">Add Measurement</string>
@@ -284,8 +290,11 @@
     <string name="cohortDeleteTitle">Delete Cohort</string>
     <string name="cohortListEmptyMessage">Cohort list is empty. Do you want to create a new cohort?</string>
     <string name="cohortListEmptyTitle">No Cohorts</string>
+    <string name="cohortcheck">Please Enter Cohort Details.</string>
     <string name="cohortdetailsactivity_description_label">DESCRIPTION</string>
     <string name="cohortdetailsactivity_label">Cohort Profile</string>
+    <string name="cohortdetailsactivity_member_label">MEMBERS</string>
+    <string name="cohortdetailsactivity_other_label">OTHER NOTES</string>
     <string name="cohortnamecheck">Please Enter Cohort Name.</string>
     <string name="cohortnoteshint">Other Relevant Notes</string>
     <string name="delete">Delete</string>
