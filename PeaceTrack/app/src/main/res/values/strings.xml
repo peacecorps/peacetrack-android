@@ -66,7 +66,7 @@
 	<string name="addcohortactivity_members_label">NO OF MEMBERS</string>
 	<string name="addcohortactivity_males_label">MALES</string>
 	<string name="addcohortactivity_females_label">FEMALES</string>
-	<string name="addcohortactivity_agerange_label">AGE RANGE</string>
+	<string name="addcohortactivity_agerange_label">AGE RANGE (yrs)</string>
 	<string name="addcohortactivity_position_label">POSITION</string>
 	<string name="addcohortactivity_other_label">OTHER NOTES (optional)</string>
 	<string name="searchInputCohort">Search Cohort..</string>

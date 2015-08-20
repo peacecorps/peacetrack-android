@@ -263,7 +263,7 @@
     <string name="addactivityactivity_time_label">TIME</string>
     <string name="addactivityactivity_title_label">TITLE</string>
     <string name="addcohort">Add Cohort</string>
-    <string name="addcohortactivity_agerange_label">AGE RANGE</string>
+    <string name="addcohortactivity_agerange_label">AGE RANGE (yrs)</string>
     <string name="addcohortactivity_description_label">DESCRIPTION (optional)</string>
     <string name="addcohortactivity_females_label">FEMALES</string>
     <string name="addcohortactivity_label">Add Cohort</string>

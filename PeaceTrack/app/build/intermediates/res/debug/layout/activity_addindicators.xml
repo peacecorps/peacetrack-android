@@ -41,8 +41,7 @@
 	          android:padding="10dp"
 	          android:text="@string/back"
 		android:textColor="@color/darkgrey"
-	          android:textSize="22sp"
-	          android:textStyle="bold" />
+	          android:textSize="22sp" />
     
     <Button
 	          android:id="@+id/savebutton"

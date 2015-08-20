@@ -77,9 +77,9 @@ public class AddCohortActivity extends ActionBarActivity implements View.OnClick
 	private void setEditableElements() {
 		nameEditText.setText(cohort.getName());
 		descriptionEditText.setText(cohort.getDescription());
-		noOfMembersEditText.setText(cohort.getNoOfMembers());
-		noOfMalesEditText.setText(cohort.getNoOfMales());
-		noOfFemalesEditText.setText(cohort.getNoOfFemales());
+		noOfMembersEditText.setText(Integer.toString(cohort.getNoOfMembers()));
+		noOfMalesEditText.setText(Integer.toString(cohort.getNoOfMales()));
+		noOfFemalesEditText.setText(Integer.toString(cohort.getNoOfFemales()));
 		positionEditText.setText(cohort.getPosition());
 		otherNotesEditText.setText(cohort.getOtherNotes());
 
@@ -152,7 +152,10 @@ public class AddCohortActivity extends ActionBarActivity implements View.OnClick
 			cohortsDAO.addCohort(cohort);
 		else
 			cohortsDAO.updateCohort(cohort);
-		finish();
+
+		Intent intent = new Intent(AddCohortActivity.this,
+				ListCohortsActivity.class);
+		AddCohortActivity.this.startActivity(intent);
 	}
 
 	private boolean checkExistingCohort(String name) {
@@ -172,9 +175,6 @@ public class AddCohortActivity extends ActionBarActivity implements View.OnClick
 		int id = v.getId();
 		if(id == R.id.savecohortbutton) {
 			saveCohort();
-			Intent intent = new Intent(AddCohortActivity.this,
-					ListCohortsActivity.class);
-			AddCohortActivity.this.startActivity(intent);
 		}
 	}
 }
