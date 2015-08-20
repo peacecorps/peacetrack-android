@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../PeaceTrack/gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../PeaceTrack/gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../PeaceTrack/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../PeaceTrack/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../PeaceTrack/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../PeaceTrack/libs" />
+        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../PeaceTrack/proguard_logs" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file:///production/PeaceTrack" />
+    <output-test url="file:///test/PeaceTrack" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android 5.1.1 Google APIs" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="appcompat" exported="" />
+  </component>
+</module>
