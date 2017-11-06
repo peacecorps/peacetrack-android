@@ -1,0 +1,161 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:1-72:12
+MERGED from [com.android.support:appcompat-v7:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/appcompat-v7-22.2.0.aar/098362181a49ba48bcafd4e8d00514ea/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-v4:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/support-v4-22.2.0.aar/db20ab29a2214ca66a8cf761fec44955/AndroidManifest.xml:17:1-24:12
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:1-72:12
+	package
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:3:5-29
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:5:5-30
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:4:5-28
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+uses-sdk
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:7:5-9:41
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:7:5-9:41
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/appcompat-v7-22.2.0.aar/098362181a49ba48bcafd4e8d00514ea/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/appcompat-v7-22.2.0.aar/098362181a49ba48bcafd4e8d00514ea/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/support-v4-22.2.0.aar/db20ab29a2214ca66a8cf761fec44955/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/support-v4-22.2.0.aar/db20ab29a2214ca66a8cf761fec44955/AndroidManifest.xml:20:5-43
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:7:5-9:41
+INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:9:9-38
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:8:9-35
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+		INJECTED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:11:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:12:22-76
+application
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:14:5-70:19
+MERGED from [com.android.support:appcompat-v7:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/appcompat-v7-22.2.0.aar/098362181a49ba48bcafd4e8d00514ea/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/appcompat-v7-22.2.0.aar/098362181a49ba48bcafd4e8d00514ea/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/support-v4-22.2.0.aar/db20ab29a2214ca66a8cf761fec44955/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.0] /home/chahat/.gradle/caches/transforms-1/files-1.1/support-v4-22.2.0.aar/db20ab29a2214ca66a8cf761fec44955/AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:17:9-41
+	android:icon
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:16:9-45
+	android:allowBackup
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:15:9-35
+	android:theme
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:18:9-40
+activity#com.peacetrack.views.welcome.WelcomeActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:19:9-28:20
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:22:13-58
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:20:13-72
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:23:13-27:29
+action#android.intent.action.MAIN
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:24:17-69
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:24:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:26:17-77
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:26:27-74
+activity#com.peacetrack.views.welcome.LoginActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:29:9-32:48
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:32:13-45
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:31:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:30:13-70
+activity#com.peacetrack.views.cohorts.ListCohortsActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:33:9-36:64
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:36:13-61
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:35:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:34:13-76
+activity#com.peacetrack.views.activities.AllActivitiesActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:37:9-40:67
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:40:13-64
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:39:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:38:13-81
+activity#com.peacetrack.views.measurements.AllMeasurementsActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:41:9-44:69
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:44:13-66
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:43:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:42:13-85
+activity#com.peacetrack.views.cohorts.AddCohortActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:45:9-48:63
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:48:13-60
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:47:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:46:13-74
+activity#com.peacetrack.views.activities.AddActivityActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:49:9-52:65
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:52:13-62
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:51:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:50:13-79
+activity#com.peacetrack.views.measurements.AddMeasurementActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:53:9-56:68
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:56:13-65
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:55:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:54:13-84
+activity#com.peacetrack.views.cohorts.CohortDetailsActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:57:9-60:67
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:60:13-64
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:59:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:58:13-78
+activity#com.peacetrack.views.measurements.MeasurementDetailsActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:61:9-64:72
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:64:13-69
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:63:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:62:9-84
+activity#com.peacetrack.views.activities.AddIndicatorsActivity
+ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:65:9-68:67
+	android:label
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:68:13-64
+	android:configChanges
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:67:13-74
+	android:name
+		ADDED from /home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/AndroidManifest.xml:66:13-81
