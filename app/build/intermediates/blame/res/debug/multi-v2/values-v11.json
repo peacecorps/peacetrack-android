@@ -1,0 +1,47 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/chahat/Desktop/peacetrack-android/PeaceTrack/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
+            "map": [
+                {
+                    "source": "/home/chahat/Desktop/peacetrack-android/PeaceTrack/app/src/main/res/values-v11/styles.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "182",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "313"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "184"
+                    }
+                },
+                {
+                    "source": "/home/chahat/.gradle/caches/transforms-1/files-1.1/appcompat-v7-22.2.0.aar/098362181a49ba48bcafd4e8d00514ea/res/values-v11/values-v11.xml",
+                    "from": {
+                        "startLines": "4,10,16,22,28,34,42,43,44,49,56,58,60,67,68,69,120",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "301,720,1145,1573,1999,2428,3094,3183,3284,3692,4353,4460,4589,5194,5265,5348,9097",
+                        "endLines": "9,15,21,27,33,39,42,43,48,53,57,59,64,67,68,119,171",
+                        "endColumns": "12,12,12,12,12,12,88,100,12,12,12,12,12,70,82,12,12",
+                        "endOffsets": "715,1140,1568,1994,2423,2848,3178,3279,3687,4107,4455,4584,4948,5260,5343,9092,12981"
+                    },
+                    "to": {
+                        "startLines": "5,11,17,23,29,35,41,42,43,48,53,55,57,62,63,64,115",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "189,608,1033,1461,1887,2316,2741,2830,2931,3339,3759,3866,3995,4359,4430,4513,8262",
+                        "endLines": "10,16,22,28,34,40,41,42,47,52,54,56,61,62,63,114,166",
+                        "endColumns": "12,12,12,12,12,12,88,100,12,12,12,12,12,70,82,12,12",
+                        "endOffsets": "603,1028,1456,1882,2311,2736,2825,2926,3334,3754,3861,3990,4354,4425,4508,8257,12146"
+                    }
+                }
+            ]
+        }
+    ]
+}
